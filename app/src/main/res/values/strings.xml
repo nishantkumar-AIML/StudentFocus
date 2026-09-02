@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">student focus</string>
+    <string name="accessibility_service_description">Student Focus uses this permission solely on-device to detect in-app learning and focus activities (such as YouTube video titles, browser domains, and screen types) to help you understand your screen time. No personal data, passwords, or keystrokes are ever recorded or shared.</string>
+    <string name="accessibility_service_summary">Detects in-app learning &amp; focus activities for detailed screen time analytics.</string>
+</resources>
