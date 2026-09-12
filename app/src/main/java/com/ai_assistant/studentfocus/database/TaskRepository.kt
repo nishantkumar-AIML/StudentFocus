@@ -73,6 +73,7 @@ class TaskRepository(private val taskDao: TaskDao) {
     fun getActivitySessionsBetween(startMillis: Long, endMillis: Long): Flow<List<AppActivitySessionEntity>> = taskDao.getActivitySessionsBetween(startMillis, endMillis)
     suspend fun addActivitySession(session: AppActivitySessionEntity) = taskDao.insertActivitySession(session)
     suspend fun addActivitySessions(sessions: List<AppActivitySessionEntity>) = taskDao.insertActivitySessions(sessions)
+    suspend fun getAllActivitySessionsList(): List<AppActivitySessionEntity> = taskDao.getAllActivitySessionsList()
     suspend fun updateActivityCategory(packageName: String, contentTitle: String, newCategory: String) = taskDao.updateActivityCategory(packageName, contentTitle, newCategory)
     suspend fun updateAppCategory(packageName: String, newCategory: String) = taskDao.updateAppCategory(packageName, newCategory)
     suspend fun deleteActivitySessionById(id: String) = taskDao.deleteActivitySessionById(id)

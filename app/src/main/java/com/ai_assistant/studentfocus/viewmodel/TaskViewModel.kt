@@ -213,6 +213,28 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
             initialValue = PersonalBehaviorProfile()
         )
 
+    fun refreshPersonalBehaviorProfile() {
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
+            try {
+                val sessions = repository.getAllActivitySessionsList()
+                val feedback = repository.getAllUserFeedbackList()
+                if (sessions.isNotEmpty() || feedback.isNotEmpty()) {
+                    val profile = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Default) {
+                        com.ai_assistant.studentfocus.utils.PersonalLearningEngine.buildPersonalProfile(
+                            sessions = sessions,
+                            userFeedbackList = feedback,
+                            currentTimeMillis = System.currentTimeMillis()
+                        )
+                    }
+                    val entity = com.ai_assistant.studentfocus.utils.PersonalLearningEngine.toEntity(profile)
+                    repository.savePersonalBehaviorProfile(entity)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     fun getActivitySessionsForDate(date: String): Flow<List<AppActivitySessionEntity>> =
         repository.getActivitySessionsByDate(date)
 

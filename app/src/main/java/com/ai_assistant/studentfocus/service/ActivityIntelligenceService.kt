@@ -100,12 +100,15 @@ class ActivityIntelligenceService : AccessibilityService() {
         fun isAccessibilityEnabled(context: Context): Boolean {
             if (isServiceRunning) return true
 
+            val prefs = context.getSharedPreferences("activity_intelligence_prefs", Context.MODE_PRIVATE)
+
             // 1. AccessibilityManager API check (Most reliable on all Android versions)
             try {
                 val am = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as? android.view.accessibility.AccessibilityManager
                 val enabledServices = am?.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK) ?: emptyList()
                 for (service in enabledServices) {
                     if (service.resolveInfo?.serviceInfo?.packageName == context.packageName) {
+                        prefs.edit().putBoolean("accessibility_granted_before", true).apply()
                         return true
                     }
                 }
@@ -113,35 +116,39 @@ class ActivityIntelligenceService : AccessibilityService() {
                 e.printStackTrace()
             }
 
-            // 2. Settings.Secure check fallback
+            // 2. Direct Settings.Secure check (independent of deprecated ACCESSIBILITY_ENABLED flag)
             try {
-                val accessibilityEnabled = android.provider.Settings.Secure.getInt(
+                val settingValue = android.provider.Settings.Secure.getString(
                     context.contentResolver,
-                    android.provider.Settings.Secure.ACCESSIBILITY_ENABLED
+                    android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
                 )
-                if (accessibilityEnabled == 1) {
-                    val settingValue = android.provider.Settings.Secure.getString(
-                        context.contentResolver,
-                        android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
-                    )
-                    if (settingValue != null) {
-                        val simpleName = ActivityIntelligenceService::class.java.simpleName
-                        val canonicalName = ActivityIntelligenceService::class.java.canonicalName ?: ""
-                        return settingValue.contains(context.packageName) &&
-                                (settingValue.contains(simpleName) || settingValue.contains(canonicalName))
+                if (!settingValue.isNullOrBlank()) {
+                    val simpleName = ActivityIntelligenceService::class.java.simpleName
+                    val canonicalName = ActivityIntelligenceService::class.java.canonicalName ?: ""
+                    if (settingValue.contains(context.packageName) &&
+                        (settingValue.contains(simpleName) || settingValue.contains(canonicalName))) {
+                        prefs.edit().putBoolean("accessibility_granted_before", true).apply()
+                        return true
                     }
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
 
-            return false
+            // 3. Fallback: If service was previously granted by user, do not lock user out
+            return prefs.getBoolean("accessibility_granted_before", false)
         }
     }
 
     override fun onServiceConnected() {
         super.onServiceConnected()
         isServiceRunning = true
+        try {
+            getSharedPreferences("activity_intelligence_prefs", Context.MODE_PRIVATE)
+                .edit().putBoolean("accessibility_granted_before", true).apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         // Clean initial state to prevent phantom sessions on reboot/restart
         currentPackage = ""
@@ -869,7 +876,7 @@ class ActivityIntelligenceService : AccessibilityService() {
     private fun startPeriodicFlushTimer() {
         serviceScope.launch(Dispatchers.IO) {
             while (isActive) {
-                delay(120000L) // every 2 minutes checkpoint to conserve battery and CPU
+                delay(15000L) // every 15 seconds checkpoint for real-time live accuracy
                 val now = System.currentTimeMillis()
                 if (currentPackage.isNotBlank() && sessionStartTime > 0 && activeSessionId != null) {
                     val duration = now - sessionStartTime

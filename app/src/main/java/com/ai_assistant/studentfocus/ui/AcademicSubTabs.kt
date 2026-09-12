@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import com.ai_assistant.studentfocus.R
 import com.ai_assistant.studentfocus.models.*
 import com.ai_assistant.studentfocus.viewmodel.TaskViewModel
+import kotlinx.coroutines.isActive
 import androidx.compose.ui.platform.LocalContext
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -5386,10 +5387,24 @@ fun AppUsageSubTab(taskViewModel: TaskViewModel) {
         }
     }
 
-    LaunchedEffect(selectedDateStr) {
+    LaunchedEffect(selectedDateStr, isSubTabUnlocked) {
         hasUsagePermission = AppUsageHelper.hasUsageStatsPermission(context)
         hasAccessibilityPermission = AppUsageHelper.hasAccessibilityPermission(context)
         syncUsageForDate.value(selectedDateStr)
+        taskViewModel.refreshPersonalBehaviorProfile()
+
+        // Continuous Live-Sync Loop: Auto-updates stats every 10 seconds while screen is open
+        if (isSubTabUnlocked) {
+            val todayDateStr = sdf.format(Date())
+            while (isActive) {
+                kotlinx.coroutines.delay(10000L)
+                if (selectedDateStr == todayDateStr) {
+                    hasUsagePermission = AppUsageHelper.hasUsageStatsPermission(context)
+                    hasAccessibilityPermission = AppUsageHelper.hasAccessibilityPermission(context)
+                    syncUsageForDate.value(selectedDateStr)
+                }
+            }
+        }
     }
 
     // Automatically re-verify permissions as soon as user returns from Android Settings
@@ -5400,6 +5415,7 @@ fun AppUsageSubTab(taskViewModel: TaskViewModel) {
                 hasUsagePermission = AppUsageHelper.hasUsageStatsPermission(context)
                 hasAccessibilityPermission = AppUsageHelper.hasAccessibilityPermission(context)
                 syncUsageForDate.value(selectedDateStr)
+                taskViewModel.refreshPersonalBehaviorProfile()
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)
