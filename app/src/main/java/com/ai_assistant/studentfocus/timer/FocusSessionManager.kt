@@ -316,10 +316,18 @@ object FocusSessionManager {
         updateServiceNotification(context)
     }
 
-    fun stopSession(context: Context, taskId: String? = null) {
+    fun stopSession(context: Context, taskId: String? = null, saveProgress: Boolean = true) {
         if (!isInitialized) init(context)
         val targetId = taskId ?: _activeSession.value?.taskId
         val currentMap = _taskSessions.value.toMutableMap()
+        val sessionToStop = if (targetId != null) currentMap[targetId] else _activeSession.value
+
+        if (sessionToStop != null && saveProgress) {
+            val studiedMinutes = sessionToStop.getActualStudiedMinutes()
+            if (studiedMinutes > 0) {
+                saveStudiedMinutesToDb(context, studiedMinutes)
+            }
+        }
 
         if (targetId != null) {
             currentMap.remove(targetId)
@@ -344,6 +352,32 @@ object FocusSessionManager {
             }
         } else {
             updateServiceNotification(context)
+        }
+    }
+
+    fun saveStudiedMinutesToDb(context: Context, minutes: Int) {
+        if (minutes <= 0) return
+        scope.launch(Dispatchers.IO) {
+            try {
+                val db = com.ai_assistant.studentfocus.database.AppDatabase.getDatabase(context)
+                val todayStr = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
+                val existing = db.taskDao().getStudyHistoryDirect(todayStr)
+                val currentMins = existing?.studyMinutes ?: 0
+                val totalMins = minOf(1440, currentMins + minutes)
+                val completedTasks = existing?.completedTasks ?: 0
+                val progressPercent = existing?.progressPercentage ?: 0
+
+                db.taskDao().insertStudyHistory(
+                    com.ai_assistant.studentfocus.models.StudyHistoryEntity(
+                        date = todayStr,
+                        completedTasks = completedTasks,
+                        studyMinutes = totalMins,
+                        progressPercentage = progressPercent
+                    )
+                )
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

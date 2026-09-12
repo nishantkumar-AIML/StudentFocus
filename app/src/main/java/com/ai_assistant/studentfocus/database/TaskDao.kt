@@ -22,6 +22,12 @@ interface TaskDao {
     @Query("SELECT * FROM study_history ORDER BY date DESC")
     fun getAllStudyHistory(): Flow<List<StudyHistoryEntity>>
 
+    @Query("SELECT * FROM study_history WHERE date = :date LIMIT 1")
+    suspend fun getStudyHistoryDirect(date: String): StudyHistoryEntity?
+
+    @Query("SELECT * FROM study_history")
+    suspend fun getAllStudyHistoryDirect(): List<StudyHistoryEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStudyHistory(history: StudyHistoryEntity)
 

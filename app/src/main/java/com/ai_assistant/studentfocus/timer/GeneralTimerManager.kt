@@ -205,6 +205,12 @@ object GeneralTimerManager {
         _isRunning.value = false
         tickerJob?.cancel()
 
+        val elapsedSecs = if (_timerMode.value == 0) stopwatchAccumulatedSeconds else pomodoroAccumulatedElapsed
+        val studiedMins = elapsedSecs / 60
+        if (studiedMins > 0) {
+            FocusSessionManager.saveStudiedMinutesToDb(context, studiedMins)
+        }
+
         if (_timerMode.value == 0) {
             stopwatchAccumulatedSeconds = 0
             _stopwatchElapsedSeconds.value = 0

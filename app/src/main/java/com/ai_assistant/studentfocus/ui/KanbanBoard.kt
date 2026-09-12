@@ -406,7 +406,7 @@ fun KanbanBoard(
             targetFocusMinutes = targetFocusMins,
             onConfirm = { minutes, notes ->
                 taskViewModel.logTaskCompletionTimeAndNotes(task.id, minutes, notes)
-                com.ai_assistant.studentfocus.timer.FocusSessionManager.stopSession(context, task.id)
+                com.ai_assistant.studentfocus.timer.FocusSessionManager.stopSession(context, task.id, saveProgress = false)
                 completingTask = null
             },
             onDismiss = {
