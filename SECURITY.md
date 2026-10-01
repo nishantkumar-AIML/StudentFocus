@@ -1,0 +1,26 @@
+# Security Policy — StudentFocus
+
+## 1. Zero-Leakage Architecture Guarantee
+
+StudentFocus is designed with a strict **Privacy-First, On-Device Sovereignty** model:
+- **Zero Cloud Database Sync:** All schedules, notes, attendance records, financial transactions, routines, and flashcards remain in the local SQLite/Room database on the user's Android phone.
+- **Zero Background Trackers or Telemetry:** No third-party behavioral analytics, ad SDKs, or background tracking beacons are bundled into the application or product website.
+- **Dual-Mode AI Isolation:** In Offline Mode, StudentOS AI operates 100% locally on-device. In Online Mode, only the user's explicit academic question is transmitted via HTTPS to knowledge APIs; no personal schedules, ledgers, or attendance logs are ever transmitted.
+
+## 2. Website Security & Hardening Measures
+
+This static product website adheres to rigorous web security standards:
+- **Strict Content Security Policy (CSP):** Enforces origin boundaries (`default-src 'self'`), restricting external connections exclusively to Google Fonts and the official GitHub Releases API.
+- **Clickjacking Defense:** Frame-ancestors restricted (`frame-ancestors 'none'`, `X-Frame-Options: DENY`).
+- **MIME Sniffing Blocked:** `X-Content-Type-Options: nosniff`.
+- **Permissions Lockdown:** Camera, microphone, geolocation, and USB APIs are completely restricted (`Permissions-Policy`).
+- **Tabnabbing Defense:** 100% of outbound hyperlinks enforce `rel="noopener noreferrer"`.
+- **XSS Defense:** Zero `innerHTML` or `eval()` execution in client-side JavaScript.
+
+## 3. Reporting a Vulnerability
+
+If you discover a potential security vulnerability in StudentFocus or its website, please report it responsibly:
+1. Navigate to the [StudentFocus GitHub Issues](https://github.com/nishantkumar-AIML/StudentFocus/issues) tab.
+2. Select **New Issue** or contact the author via GitHub.
+3. Provide a clear description and reproduction steps.
+4. We take security seriously and will investigate and patch verified vulnerabilities promptly.

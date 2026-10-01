@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StudentFocus is an AI-powered student productivity and study management app for Android. Plan studies, manage assignments, timetables and attendance, prepare for exams, focus with study sessions, and track academic progress.">
+  <meta name="keywords" content="student productivity app, study management app, ai study planner, study app for android, student focus, study planner android, exam preparation app, student timetable, attendance tracker, gpa calculator, focus timer, offline study app, studentos">
+  <meta name="author" content="Nishant Kumar">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://studentfocus-apk.vercel.app/">
+  <title>StudentFocus — AI Study Planner &amp; Student Productivity App</title>
+  
+  <!-- Security Hardening: Content Security Policy & Origin Protections -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+  
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="StudentFocus — AI Study Planner &amp; Student Productivity App">
+  <meta property="og:description" content="StudentFocus is an AI-powered student productivity and study management app for Android. Plan studies, manage assignments, timetables and attendance, prepare for exams, focus with study sessions, and track academic progress.">
+  <meta property="og:image" content="https://studentfocus-apk.vercel.app/images/studentfocus_app_icon.jpg">
+  <meta property="og:url" content="https://studentfocus-apk.vercel.app/">
+  <meta property="og:site_name" content="StudentFocus">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="StudentFocus — AI Study Planner &amp; Student Productivity App">
+  <meta name="twitter:description" content="StudentFocus is an AI-powered student productivity and study management app for Android. Plan studies, manage assignments, timetables and attendance, prepare for exams, focus with study sessions, and track academic progress.">
+  <meta name="twitter:image" content="https://studentfocus-apk.vercel.app/images/studentfocus_app_icon.jpg">
+
+  <link rel="icon" type="image/jpeg" href="images/studentfocus_app_icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3.0.0">
+
+  <!-- Schema.org Structured Data: SoftwareApplication, Organization & FAQPage -->
+  <script type="application/ld+json" id="schema-software-app">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "StudentFocus",
+      "alternateName": ["StudentFocus — AI Study Planner & Student Productivity App", "StudentFocus App", "StudentOS"],
+      "operatingSystem": "Android 8.0+",
+      "applicationCategory": ["EducationalApplication", "ProductivityApplication"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "StudentFocus is an AI-powered student productivity and study management app for Android. Plan studies, manage assignments, timetables and attendance, prepare for exams, focus with study sessions, and track academic progress.",
+      "softwareVersion": "5.0",
+      "url": "https://studentfocus-apk.vercel.app/",
+      "downloadUrl": "https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk",
+      "installUrl": "https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk",
+      "fileFormat": "application/vnd.android.package-archive",
+      "author": {
+        "@type": "Person",
+        "name": "Nishant Kumar",
+        "url": "https://github.com/nishantkumar-AIML"
+      },
+      "codeRepository": "https://github.com/nishantkumar-AIML/StudentFocus",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/DownloadAction",
+        "userInteractionCount": 33
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "StudentFocus",
+      "url": "https://studentfocus-apk.vercel.app/",
+      "logo": "https://studentfocus-apk.vercel.app/images/studentfocus_app_icon.jpg",
+      "sameAs": [
+        "https://github.com/nishantkumar-AIML/StudentFocus"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is StudentFocus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "StudentFocus is an AI-powered student productivity and study management application for Android (Android 8.0+). It combines an on-device focus stopwatch, 24-hour study heatmap, time waste auditor, Kanban task board, local study notes, class timetables, attendance tracking, GPA/CGPA calculators, 21-day habit challenges, and dual-mode StudentOS AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is StudentFocus designed for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "StudentFocus is designed for school, college, and university students, as well as students preparing for exams who need an integrated, distraction-free environment to organize assignments, schedules, attendance, and study routines with complete on-device privacy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can students do with StudentFocus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Students can plan study targets with the feasibility pace planner, record study blocks with the focus stopwatch, manage assignments through a 4-stage Kanban board, maintain class timetables, monitor subject attendance against 75% or 80% thresholds, calculate semester GPA and degree CGPA, practice revision flashcards, and audit daily routines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does StudentFocus have an AI study assistant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. StudentFocus features StudentOS AI with a dual-mode architecture: an on-device Offline Mode that executes local directives (@help, @task, @routine, @attendance, @cgpa, @date) without network access, and an optional Online Mode for conceptual academic tutoring. Personal records remain strictly on-device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can StudentFocus work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. StudentFocus is an offline-first application. All core features—including the focus timer, notes, timetable, attendance tracker, flashcards, 21-day habits, financial ledger, and Offline StudentOS AI—operate 100% locally on your phone using local SQLite storage without internet access or account registration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does StudentFocus help with exam preparation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. StudentFocus provides dedicated exam preparation tools including exam countdown targets, credit-weighted GPA/CGPA calculators with reappear status flags, revision flashcard decks for active recall, and attendance margin tracking to protect exam eligibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to download and install StudentFocus APK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Download the official release binary (5.apk) from the official GitHub Releases link. Open the downloaded file, allow unknown sources permission for your browser or file manager if prompted by Android, and tap Install. No account or registration is required. Step-by-step guide: https://studentfocus-apk.vercel.app/#installation"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if Android or Google Play Protect blocks the StudentFocus APK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If Android blocks the StudentFocus APK, follow these steps: 1. Download the APK only from the official StudentFocus release (https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk). 2. Open the Google Play Store. 3. Tap your profile icon in the top-right corner. 4. Select Play Protect. 5. Tap the Settings icon. 6. If Play Protect is blocking a verified APK, carefully review the warning before proceeding. 7. Keep Play Protect enabled whenever possible. 8. If you temporarily disable app scanning, turn it back on immediately after installation. Official installation guide link: https://studentfocus-apk.vercel.app/#installation"
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+<body>
+  <!-- Top Global Announcement / Trust Banner -->
+  <aside class="trust-bar" aria-label="Privacy and Availability Notice">
+    <div class="container trust-bar-content">
+      <span class="trust-badge">
+        <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v4a1 1 0 102 0V7z" clip-rule="evenodd"/>
+        </svg>
+        100% On-Device Privacy: Your notes, routines & records never leave your phone
+      </span>
+      <span class="trust-sep" aria-hidden="true">•</span>
+      <span class="trust-text">Official Direct APK Release v5.0 Available</span>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="top-nav">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-link" aria-label="StudentFocus Home">
+        <img src="images/studentfocus_app_icon.jpg" alt="StudentFocus Logo" class="brand-logo" width="40" height="40">
+        <div class="brand-text">
+          <span class="brand-name">StudentFocus</span>
+          <span class="brand-motto">Study. Focus. Progress.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-links" id="primary-navigation" aria-label="Primary Site Navigation">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#interactive-demo" class="nav-link">App Demo</a>
+        <a href="#dashboard" class="nav-link">Dashboard</a>
+        <a href="#study-features" class="nav-link">Study Suite</a>
+        <a href="#academic" class="nav-link">Academic</a>
+        <a href="#studentos-ai" class="nav-link">StudentOS AI</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#installation" class="nav-link">Install Help</a>
+      </nav>
+
+      <!-- Desktop Action Buttons -->
+      <div class="nav-actions">
+        <a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" aria-label="GitHub Repository">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span class="btn-text">GitHub</span>
+        </a>
+        <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk" download class="btn btn-primary" aria-label="Download Official Release APK">
+          <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+          <span class="btn-text">Download APK</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button type="button" class="mobile-menu-toggle" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Toggle navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Panel -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel" hidden>
+      <div class="container mobile-nav-content">
+        <nav class="mobile-nav-list" aria-label="Mobile Navigation">
+          <a href="#overview" class="mobile-nav-link">Overview</a>
+          <a href="#interactive-demo" class="mobile-nav-link">Interactive Demo</a>
+          <a href="#dashboard" class="mobile-nav-link">Dashboard Architecture</a>
+          <a href="#study-features" class="mobile-nav-link">Core Study Suite</a>
+          <a href="#academic" class="mobile-nav-link">Academic Modules</a>
+          <a href="#studentos-ai" class="mobile-nav-link">StudentOS AI</a>
+          <a href="#about" class="mobile-nav-link">About Project</a>
+          <a href="#installation" class="mobile-nav-link">Installation Guide</a>
+          <a href="#faq" class="mobile-nav-link">Troubleshooting & FAQ</a>
+        </nav>
+        <div class="mobile-nav-cta">
+          <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk" class="btn btn-primary btn-block">
+            <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+            Download Official APK (v5.0)
+          </a>
+          <a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text-col">
+          <div class="pill-badge">
+            <span class="badge-dot"></span>
+            Android AI Study Planner &amp; Student Productivity App
+          </div>
+          <h1 class="hero-title" id="hero-title">
+            StudentFocus <span class="hero-tagline">— AI Study Planner &amp; Student Productivity App for Android</span>
+          </h1>
+          <p class="hero-description">
+            A comprehensive, offline-first student productivity and study management Android application designed for disciplined school, college, and university scholars. Organize assignments, schedule weekly class timetables, monitor attendance, prepare for exams, time study sessions, and track academic progress with private StudentOS AI.
+          </p>
+
+          <div class="hero-cta-group">
+            <div class="hero-btn-with-counter">
+              <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk" class="btn btn-primary btn-lg" id="hero-download-btn">
+                <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+                <span>Download Official APK</span>
+                <span class="btn-subtext">Release 5.apk (Direct)</span>
+              </a>
+              <div class="hero-counter-tag" title="Verified releases downloaded">
+                <span class="live-dot" aria-hidden="true"></span>
+                <strong class="hero-counter-num" id="hero-download-count">33</strong>
+                <span class="hero-counter-lbl">verified downloads</span>
+              </div>
+            </div>
+            <a href="#interactive-demo" class="btn btn-secondary btn-lg">
+              <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+              </svg>
+              <span>Explore Interactive Demo</span>
+            </a>
+            <a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+
+          <!-- Key Honest Architectural Pillars -->
+          <div class="hero-specs-row">
+            <div class="spec-item">
+              <span class="spec-label">Architecture</span>
+              <span class="spec-value">Native Android (.apk)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Data Privacy</span>
+              <span class="spec-value">100% Stored On-Device</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Network Usage</span>
+              <span class="spec-value">Full Offline (AI Online Optional)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Distribution</span>
+              <span class="spec-value">Direct Official Release</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual: Device Mockup with Real Screenshot -->
+        <div class="hero-mockup-col">
+          <div class="device-frame hero-phone">
+            <!-- Simulated Android Notch / Speaker / Camera -->
+            <div class="phone-speaker"></div>
+            <!-- Dynamic Real-Time Status Bar -->
+            <div class="phone-status-bar" aria-label="Simulated phone status bar">
+              <span class="status-time live-local-time">--:--</span>
+              <div class="status-notch">
+                <span class="camera-lens"></span>
+              </div>
+              <div class="status-icons">
+                <span class="network-badge">5G</span>
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                </svg>
+                <div class="battery-icon"><span class="battery-level"></span></div>
+              </div>
+            </div>
+
+            <!-- Scrollable App Screen Viewport -->
+            <div class="phone-screen-viewport scrollable-viewport">
+              <img src="images/feature_dashboard_full.jpg" alt="StudentFocus Dashboard Screen with live scholar stats, heatmap, time waste tracker, and study pace planner" class="app-screenshot" loading="eager">
+            </div>
+
+            <!-- Floating Device Badge -->
+            <div class="device-scroll-indicator" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm">
+                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd"/>
+              </svg>
+              <span>Scroll to preview full dashboard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: ARCHITECTURAL OVERVIEW -->
+    <section class="section bg-slate" id="overview" aria-labelledby="overview-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge">Built For Real Academic Demands</div>
+          <h2 class="section-title" id="overview-heading">Student Productivity &amp; Study Management System for Android</h2>
+          <p class="section-subtitle">
+            StudentFocus combines study planning, timetable organization, assignment management, attendance monitoring, and exam preparation into a unified offline Android application with zero cloud lock-in.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1: Dashboard Analytics -->
+          <article class="feature-card">
+            <div class="card-icon icon-indigo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3v18h18" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 9l-5 5-4-4-3 3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Study Analytics & Heatmap</h3>
+            <p class="card-text">
+              Continuous 24h heatmap visualization, daily progress percentages, fire streaks, and weekly study minute charts for honest self-reflection.
+            </p>
+            <button type="button" class="card-action-btn" data-demo-target="dashboard">
+              Preview in Demo &rarr;
+            </button>
+          </article>
+
+          <!-- Card 2: Time Waste Tracker -->
+          <article class="feature-card">
+            <div class="card-icon icon-rose">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Time Waste & Idle Tracker</h3>
+            <p class="card-text">
+              Real-time counter records idle hours and off-goal app sessions until you start a designated study task, turning subconscious procrastination into clear metrics.
+            </p>
+            <button type="button" class="card-action-btn" data-demo-target="dashboard">
+              Preview in Demo &rarr;
+            </button>
+          </article>
+
+          <!-- Card 3: Study Pace Planner -->
+          <article class="feature-card">
+            <div class="card-icon icon-emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="12 8 8 12 12 16 12 8"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Study Pace & Goal Planner</h3>
+            <p class="card-text">
+              Calculates daily study duration required to meet long-term targets against your available 24h routine budget with dynamic feasibility ratings.
+            </p>
+            <button type="button" class="card-action-btn" data-demo-target="dashboard">
+              Preview in Demo &rarr;
+            </button>
+          </article>
+
+          <!-- Card 4: 10 Academic Modules -->
+          <article class="feature-card">
+            <div class="card-icon icon-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <h3 class="card-title">10 Academic Modules</h3>
+            <p class="card-text">
+              Weekly timetables, attendance tracking, Subject GPA & Semester CGPA calculators, flashcards, 21-day habits, routines, and offline cash ledgers.
+            </p>
+            <button type="button" class="card-action-btn" data-demo-target="academic-timetable">
+              Explore Academic Suite &rarr;
+            </button>
+          </article>
+
+          <!-- Card 5: Deep Activity Intelligence -->
+          <article class="feature-card">
+            <div class="card-icon icon-violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a8 8 0 0 0-8 8c0 3.3 2 6.1 5 7.3V19a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1.7c3-1.2 5-4 5-7.3a8 8 0 0 0-8-8z"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+                <path d="M8 13a4 4 0 0 0 8 0"/>
+              </svg>
+            </div>
+            <h3 class="card-title">On-Device Activity Intelligence</h3>
+            <p class="card-text">
+              Locally inspects video titles, documentation queries, and apps to categorize your time into Aligned, Relevant, Neutral, and Off-Goal buckets without sending data off your phone.
+            </p>
+            <button type="button" class="card-action-btn" data-demo-target="academic-activity">
+              View Activity Intelligence &rarr;
+            </button>
+          </article>
+
+          <!-- Card 6: Dual-Mode StudentOS AI -->
+          <article class="feature-card">
+            <div class="card-icon icon-cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3 class="card-title">StudentOS AI Companion</h3>
+            <p class="card-text">
+              Fully private on-device companion for offline commands (@help, @task, @routine) plus an optional high-speed Online mode for complex subject tutoring.
+            </p>
+            <button type="button" class="card-action-btn" data-demo-target="studentos-offline">
+              Explore AI Modes &rarr;
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE APP DEMO -->
+    <section class="section" id="interactive-demo" aria-labelledby="demo-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge pill-badge-primary">Interactive Product Tour</div>
+          <h2 class="section-title" id="demo-heading">Explore StudentFocus App Screens</h2>
+          <p class="section-subtitle">
+            Navigate through authentic screenshots captured directly from the StudentFocus Android app. Click any app section below to preview its interface, features, and controls.
+          </p>
+          <div class="demo-disclaimer" role="note">
+            <svg class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            <span>Interactive Website Preview &mdash; Genuine Android screenshots with live simulated controls.</span>
+          </div>
+        </div>
+
+        <div class="demo-interactive-layout">
+          <!-- Navigation Sidebar / Section Switcher -->
+          <aside class="demo-sidebar" aria-label="Demo Screen Selector">
+            <h3 class="demo-sidebar-title">Main App Sections</h3>
+            <div class="demo-nav-group" role="tablist" aria-orientation="vertical">
+              <button type="button" class="demo-tab-btn active" role="tab" aria-selected="true" data-screen-key="dashboard">
+                <span class="demo-tab-icon">🏠</span>
+                <span class="demo-tab-label">Dashboard</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="tasks">
+                <span class="demo-tab-icon">📋</span>
+                <span class="demo-tab-label">Study Board (Tasks)</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="notebook">
+                <span class="demo-tab-icon">📝</span>
+                <span class="demo-tab-label">Study Notes</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="academic">
+                <span class="demo-tab-icon">🎓</span>
+                <span class="demo-tab-label">Academic Suite</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="studentos-offline">
+                <span class="demo-tab-icon">✨</span>
+                <span class="demo-tab-label">StudentOS AI (Offline)</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="studentos-online">
+                <span class="demo-tab-icon">🌐</span>
+                <span class="demo-tab-label">StudentOS AI (Online)</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="settings">
+                <span class="demo-tab-icon">⚙️</span>
+                <span class="demo-tab-label">Settings Center</span>
+              </button>
+              <button type="button" class="demo-tab-btn" role="tab" aria-selected="false" data-screen-key="customize-dashboard">
+                <span class="demo-tab-icon">🎨</span>
+                <span class="demo-tab-label">Customize Dashboard</span>
+              </button>
+            </div>
+
+            <!-- Sub-selector for Academic Module tabs -->
+            <div class="academic-subnav-panel" id="demo-academic-subnav" hidden>
+              <h4 class="subnav-title">Academic Modules (10):</h4>
+              <div class="subnav-pill-grid">
+                <button type="button" class="subnav-chip active" data-sub-screen="academic-timetable">Time Table</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-attendance">Attendance</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-subject-gpa">Subject GPA</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-semester-cgpa">Semester CGPA</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-cards">Cards / Decks</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-habits">Habits (21d)</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-ledger">Cash Ledger</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-routine">24h Routine</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-activity">Activity Intel</button>
+                <button type="button" class="subnav-chip" data-sub-screen="academic-arrange">Arrange Sections</button>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Interactive Mobile Frame Demo Area -->
+          <div class="demo-preview-stage">
+            <div class="device-frame demo-device" id="interactive-device">
+              <!-- Top Simulated Status Bar with dynamic visitor local time -->
+              <div class="phone-status-bar" aria-label="Simulated phone status bar">
+                <span class="status-time live-local-time">--:--</span>
+                <div class="status-notch">
+                  <span class="camera-lens"></span>
+                </div>
+                <div class="status-icons">
+                  <span class="network-badge">5G</span>
+                  <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                  </svg>
+                  <div class="battery-icon"><span class="battery-level"></span></div>
+                </div>
+              </div>
+
+              <!-- Main Scrollable Screen Display -->
+              <div class="demo-screen-scrollbox" id="demo-scrollbox" tabindex="0" aria-label="Demo screen content area">
+                <img src="images/feature_dashboard_full.jpg" alt="StudentFocus Interactive Screen Preview" class="demo-current-img" id="demo-img">
+              </div>
+
+              <!-- Simulated Android Bottom Navigation Bar (Functional in Demo) -->
+              <nav class="phone-bottom-nav" aria-label="Simulated App Navigation Bar">
+                <button type="button" class="nav-tab-btn active" data-bottom-tab="dashboard">
+                  <span class="tab-emoji">🏠</span>
+                  <span class="tab-name">Dashboard</span>
+                </button>
+                <button type="button" class="nav-tab-btn" data-bottom-tab="tasks">
+                  <span class="tab-emoji">📋</span>
+                  <span class="tab-name">Tasks</span>
+                </button>
+                <button type="button" class="nav-tab-btn" data-bottom-tab="notebook">
+                  <span class="tab-emoji">📝</span>
+                  <span class="tab-name">Notebook</span>
+                </button>
+                <button type="button" class="nav-tab-btn" data-bottom-tab="academic">
+                  <span class="tab-emoji">🎓</span>
+                  <span class="tab-name">Academic</span>
+                </button>
+                <button type="button" class="nav-tab-btn" data-bottom-tab="studentos">
+                  <span class="tab-emoji">💬</span>
+                  <span class="tab-name">Tutor</span>
+                </button>
+                <button type="button" class="nav-tab-btn" data-bottom-tab="settings">
+                  <span class="tab-emoji">⚙️</span>
+                  <span class="tab-name">Settings</span>
+                </button>
+              </nav>
+
+              <!-- Android Home Navigation Indicator Pill -->
+              <div class="phone-home-pill" aria-hidden="true"></div>
+            </div>
+
+            <!-- Companion Details Box for Current Screen -->
+            <div class="demo-screen-info" id="demo-screen-info" aria-live="polite">
+              <div class="info-header">
+                <span class="info-tag" id="demo-info-tag">Overview</span>
+                <h4 class="info-title" id="demo-info-title">Dashboard & Study Metrics</h4>
+              </div>
+              <p class="info-description" id="demo-info-desc">
+                The central control hub of StudentFocus. Displays your scholar level and XP, today's completion rates, continuous 24h heatmap, idle time waste tracker, weekly study chart, study pace planner, and quick notes.
+              </p>
+              <div class="info-bullets" id="demo-info-bullets">
+                <span class="bullet-chip">Novice Learner XP</span>
+                <span class="bullet-chip">24h Study Heatmap</span>
+                <span class="bullet-chip">Time Waste Auditor</span>
+                <span class="bullet-chip">Pace & Goal Planner</span>
+              </div>
+              <div class="info-controls">
+                <button type="button" class="btn btn-sm btn-outline" id="demo-open-fullscreen-btn">
+                  <svg class="icon-sm" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l3.293 3.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-3.293 3.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 9a1 1 0 012 0v1.586l3.293-3.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-3.293-3.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd"/>
+                  </svg>
+                  View in Gallery Modal
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DASHBOARD ARCHITECTURE -->
+    <section class="section bg-slate" id="dashboard" aria-labelledby="dashboard-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="pill-badge">Feature Deep Dive</div>
+          <h2 class="section-title" id="dashboard-heading">Study Planning, Focus Tracking &amp; Academic Analytics</h2>
+          <p class="section-subtitle">
+            Every section of the StudentFocus dashboard is grounded in real cognitive productivity needs. Explore the core analytics and tracking engines built into the main view.
+          </p>
+        </div>
+
+        <div class="deep-dive-grid">
+          <div class="deep-dive-col">
+            <div class="spec-card">
+              <div class="spec-card-header">
+                <span class="spec-num">01</span>
+                <h3 class="spec-title">Scholar Avatar &amp; Gamified XP</h3>
+              </div>
+              <p class="spec-body">
+                Starts you as a Novice Learner (Level 1 Scholar, XP: 0/100). Completing study blocks, checking off syllabus items, and maintaining streaks earns verifiable experience points to keep momentum high.
+              </p>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-header">
+                <span class="spec-num">02</span>
+                <h3 class="spec-title">Continuous Study Heatmap</h3>
+              </div>
+              <p class="spec-body">
+                A GitHub-inspired activity matrix tracking study density across hours and days up to 24h max, making skipped days and consistent study patterns immediately apparent.
+              </p>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-header">
+                <span class="spec-num">03</span>
+                <h3 class="spec-title">Time Waste &amp; Idle Tracker</h3>
+              </div>
+              <p class="spec-body">
+                Ticking live when no academic session is active. Explicitly logs idle phone hours until a study task is started. Resets honestly at midnight with cumulative all-time counters.
+              </p>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-header">
+                <span class="spec-num">04</span>
+                <h3 class="spec-title">Weekly Study Minutes Chart</h3>
+              </div>
+              <p class="spec-body">
+                A 7-day chronological bar chart comparing active minutes day by day so you can maintain a balanced weekly rhythm without burnout.
+              </p>
+            </div>
+
+            <div class="spec-card" id="study-planner">
+              <div class="spec-card-header">
+                <span class="spec-num">05</span>
+                <h3 class="spec-title">Study Pace &amp; Goal Planner</h3>
+              </div>
+              <p class="spec-body">
+                Input your target timeline (1d, 2d, 3d, 7d, 14d, 30d) and total study hours (5h to 100h+). The engine verifies if it fits into your 24h routine budget and provides an "Achievable" confirmation.
+              </p>
+              <div class="spec-links" style="margin-top: 10px; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Related Features:</span>
+                <a href="#pane-timetable" class="text-link">Class Timetable</a> &bull;
+                <a href="#focus-timer" class="text-link">Focus Stopwatch</a> &bull;
+                <a href="#assignment-manager" class="text-link">Assignment Board</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-media-col">
+            <div class="device-frame static-mockup">
+              <div class="phone-status-bar">
+                <span class="status-time live-local-time">--:--</span>
+                <div class="status-notch"><span class="camera-lens"></span></div>
+                <div class="status-icons">
+                  <span class="network-badge">5G</span>
+                  <div class="battery-icon"><span class="battery-level"></span></div>
+                </div>
+              </div>
+              <div class="scrollable-viewport-half">
+                <img src="images/feature_dashboard_full.jpg" alt="StudentFocus Dashboard View" class="app-screenshot" loading="lazy">
+              </div>
+              <div class="mockup-caption">
+                Real Dashboard Screenshot (Scrollable preview)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CORE STUDY SUITE -->
+    <section class="section" id="study-features" aria-labelledby="study-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge">Study Suite</div>
+          <h2 class="section-title" id="study-heading">Assignment Management, Study Notes, Goal Planner &amp; Focus Timer</h2>
+          <p class="section-subtitle">
+            Engineered to streamline your daily academic workload with zero bloat and absolute clarity.
+          </p>
+        </div>
+
+        <div class="feature-triplet-grid">
+          <!-- Item 1: Study Board -->
+          <div class="triplet-card" id="assignment-manager">
+            <div class="triplet-mockup-wrap">
+              <img src="images/feature_study_board_tasks.jpg" alt="Study Board screen with Uncomplete, To Do, In Progress, Done filters" class="triplet-img" loading="lazy">
+            </div>
+            <div class="triplet-content">
+              <div class="triplet-badge">Study Board</div>
+              <h3 class="triplet-title">Kanban Task Board &amp; Assignment Manager</h3>
+              <p class="triplet-desc">
+                Organize assignments and revision topics across four clear stages: <strong>Uncomplete</strong>, <strong>To Do</strong>, <strong>In Progress</strong>, and <strong>Done</strong> with instant date-picker filtering.
+              </p>
+              <div class="triplet-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Related:</span>
+                <a href="#study-planner" class="text-link">Study Planner</a> &bull;
+                <a href="#pane-cards" class="text-link">Flashcards</a> &bull;
+                <a href="#focus-timer" class="text-link">Focus Timer</a>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline view-gallery-btn" data-gallery-src="images/feature_study_board_tasks.jpg" data-gallery-title="Study Board">
+                Inspect Full Screenshot &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 2: Study Notes -->
+          <div class="triplet-card" id="study-notes">
+            <div class="triplet-mockup-wrap">
+              <img src="images/feature_study_notes_notebook.jpg" alt="Study Notes screen with Topic and Notes content fields" class="triplet-img" loading="lazy">
+            </div>
+            <div class="triplet-content">
+              <div class="triplet-badge">Study Notes</div>
+              <h3 class="triplet-title">Topic-Based Study Notebook</h3>
+              <p class="triplet-desc">
+                Clean, distraction-free markdown writing space with instant word count, topic tags, and timestamped saves. Stored strictly in local SQLite with zero cloud syncing risks.
+              </p>
+              <div class="triplet-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Related:</span>
+                <a href="#assignment-manager" class="text-link">Assignments</a> &bull;
+                <a href="#pane-cards" class="text-link">Flashcard Decks</a>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline view-gallery-btn" data-gallery-src="images/feature_study_notes_notebook.jpg" data-gallery-title="Study Notes">
+                Inspect Full Screenshot &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 3: Focus Study Stopwatch -->
+          <div class="triplet-card" id="focus-timer">
+            <div class="triplet-mockup-wrap">
+              <img src="images/feature_dashboard_full.jpg" alt="Focus Study Stopwatch with ambient sound controls" class="triplet-img crop-stopwatch" loading="lazy">
+            </div>
+            <div class="triplet-content">
+              <div class="triplet-badge">Focus Stopwatch</div>
+              <h3 class="triplet-title">Active Learning Duration &amp; Focus Timer</h3>
+              <p class="triplet-desc">
+                High-precision timer counting active learning seconds, paired with ambient sound frequency sliders and live ongoing countdown in the Android notification shade.
+              </p>
+              <div class="triplet-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Related:</span>
+                <a href="#study-planner" class="text-link">Study Planner</a> &bull;
+                <a href="#pane-routine" class="text-link">Routine Audit</a> &bull;
+                <a href="#pane-timetable" class="text-link">Timetable</a>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline view-gallery-btn" data-gallery-src="images/feature_dashboard_full.jpg" data-gallery-title="Focus Stopwatch & Goal Planner">
+                Inspect Full Screenshot &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: COMPLETE ACADEMIC SUITE (10 MODULES) -->
+    <section class="section bg-slate" id="academic" aria-labelledby="academic-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge pill-badge-primary">College & School Toolkit</div>
+          <h2 class="section-title" id="academic-heading">10 Modular Academic Subsystems: Timetable, Attendance, Exam Preparation &amp; GPA</h2>
+          <p class="section-subtitle">
+            StudentFocus incorporates an exhaustive set of 10 dedicated academic tools accessible under the Academic tab. Every tool solves a specific requirement without requiring separate third-party apps.
+          </p>
+        </div>
+
+        <!-- Academic Tabs Navigation -->
+        <div class="academic-tabs-bar" role="tablist" aria-label="Academic Subsystems Navigation">
+          <button type="button" class="academic-tab active" role="tab" aria-selected="true" data-academic-pane="pane-timetable">Time Table</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-attendance">Attendance</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-subject-gpa">Subject GPA</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-cgpa">Semester CGPA</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-cards">Cards / Decks</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-habits">Habits (21d)</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-ledger">Cash Ledger</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-routine">24h Routine</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-intel">Activity Intel</button>
+          <button type="button" class="academic-tab" role="tab" aria-selected="false" data-academic-pane="pane-arrange">Arrange Sections</button>
+        </div>
+
+        <!-- Academic Panes Content -->
+        <div class="academic-panes-wrap">
+          <!-- 1. Weekly Time Table -->
+          <div class="academic-pane active" id="pane-timetable" role="tabpanel">
+            <div class="academic-split">
+              <div class="academic-text" id="student-timetable">
+                <span class="module-num">Module 01</span>
+                <h3 class="academic-heading">Weekly Time Table &amp; Class Slots</h3>
+                <p>
+                  Schedule lectures, lab sessions, and study slots day-by-day (Monday through Saturday). StudentFocus syncs with your routine alarms to notify you right as a class or study block begins.
+                </p>
+                <div class="academic-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Related:</span>
+                  <a href="#pane-attendance" class="text-link">Attendance Tracker</a> &bull;
+                  <a href="#study-planner" class="text-link">Study Planner</a> &bull;
+                  <a href="#focus-timer" class="text-link">Focus Timer</a>
+                </div>
+                <ul class="check-list">
+                  <li>Day-by-day class slot allocation with custom start &amp; end times</li>
+                  <li>Automatic prompt when no classes are scheduled for the active day</li>
+                  <li>Direct integration with notification control center for routine alarms</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_weekly_timetable.jpg" data-gallery-title="Weekly Time Table">
+                  Inspect Time Table Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_weekly_timetable.jpg" alt="Weekly Time Table screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Attendance Tracker -->
+          <div class="academic-pane" id="pane-attendance" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text" id="attendance">
+                <span class="module-num">Module 02</span>
+                <h3 class="academic-heading">Attendance Percentage Tracker</h3>
+                <p>
+                  Track your presence and absence across every registered college subject. Stay safely above critical attendance thresholds (e.g. 75% or 80%) with automated safety margin calculations.
+                </p>
+                <div class="academic-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Related:</span>
+                  <a href="#pane-subject-gpa" class="text-link">Subject GPA</a> &bull;
+                  <a href="#student-timetable" class="text-link">Class Timetable</a> &bull;
+                  <a href="#pane-cgpa" class="text-link">Cumulative CGPA</a>
+                </div>
+                <ul class="check-list">
+                  <li>Single-tap subject addition (e.g. Mathematics, Operating Systems)</li>
+                  <li>Present / Absent logging with live percentage recalculation</li>
+                  <li>Clear indicators to ensure eligibility for semester examinations</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_attendance_tracker.jpg" data-gallery-title="Attendance Tracker">
+                  Inspect Attendance Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_attendance_tracker.jpg" alt="Attendance Tracker screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Subject GPA Calculator -->
+          <div class="academic-pane" id="pane-subject-gpa" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text" id="gpa-cgpa">
+                <span class="module-num">Module 03</span>
+                <h3 class="academic-heading">Semester Subject GPA Engine</h3>
+                <p>
+                  Accurately calculates your term Grade Point Average using official academic credit formulas:
+                  <code>GPA = &Sigma;(Subject Credits &times; Grade Points) / Total Semester Credits</code>.
+                </p>
+                <div class="academic-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Related:</span>
+                  <a href="#pane-cgpa" class="text-link">Semester CGPA</a> &bull;
+                  <a href="#flashcards" class="text-link">Flashcards (Active Recall)</a> &bull;
+                  <a href="#attendance" class="text-link">Attendance Margins</a>
+                </div>
+                <ul class="check-list">
+                  <li>Full 10-point scale: A++ (10 GP), A+ (9 GP), B++ (8 GP), B+ (7 GP), C (6 GP)</li>
+                  <li>Handles special condition marks: RA (Reappear, 0 GP), AAA (Absent), W (Withdrawal), ABS (Break of Study)</li>
+                  <li>Real-time gradient feedback on overall semester performance</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_subject_gpa.jpg" data-gallery-title="Subject GPA Calculator">
+                  Inspect Subject GPA Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_subject_gpa.jpg" alt="Subject GPA Calculator screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Semester CGPA Calculator -->
+          <div class="academic-pane" id="pane-cgpa" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text">
+                <span class="module-num">Module 04</span>
+                <h3 class="academic-heading">Cumulative Degree CGPA Result</h3>
+                <p>
+                  Aggregate your cumulative performance across multiple semesters with weighted credit sums:
+                  <code>CGPA = &Sigma;(Semester GPA &times; Semester Credits) / Total Credits across all Semesters</code>.
+                </p>
+                <ul class="check-list">
+                  <li>Input term name (e.g. Sem 1, Sem 2), GPA, and registered credits (e.g. 20)</li>
+                  <li>Built-in official Grading Guide and conversion table</li>
+                  <li>Honest status indicators (such as Reappear Target flag when remedial exams are required)</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_semester_cgpa.jpg" data-gallery-title="Semester CGPA Calculator">
+                  Inspect CGPA Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_semester_cgpa.jpg" alt="Semester CGPA Calculator screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Cards / Flashcard Decks -->
+          <div class="academic-pane" id="pane-cards" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text" id="flashcards">
+                <span class="module-num">Module 05</span>
+                <h3 class="academic-heading">Flashcard Decks &amp; Spaced Practice</h3>
+                <p>
+                  Create specialized revision decks for formulas, vocabulary, definitions, and medical or technical terminology. Test yourself without distraction.
+                </p>
+                <div class="academic-links" style="margin-bottom: 12px; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Related:</span>
+                  <a href="#gpa-cgpa" class="text-link">Exam GPA Prep</a> &bull;
+                  <a href="#assignment-manager" class="text-link">Assignment Board</a> &bull;
+                  <a href="#study-notes" class="text-link">Study Notes</a>
+                </div>
+                <ul class="check-list">
+                  <li>Fast deck creation (e.g., Data Structures, Organic Chemistry Reactions)</li>
+                  <li>Clean card-flip interface for focused active recall</li>
+                  <li>Zero subscription paywalls &mdash; 100% locally stored on your phone</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_cards_flashcards.jpg" data-gallery-title="Flashcard Decks">
+                  Inspect Flashcards Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_cards_flashcards.jpg" alt="Flashcards deck creation screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Habits (21-Day Challenge) -->
+          <div class="academic-pane" id="pane-habits" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text">
+                <span class="module-num">Module 06</span>
+                <h3 class="academic-heading">21-Day Habit Challenge</h3>
+                <p>
+                  Neurological habit formation takes focused consistency. Launch 21-day streaks for morning revisions, problem-solving quotas, hydration, or sleep discipline.
+                </p>
+                <ul class="check-list">
+                  <li>Targeted 21-day timeline trackers to cement positive student habits</li>
+                  <li>Daily check-ins linked with your primary streak metrics</li>
+                  <li>Clean initiation workflow with zero unnecessary friction</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_21day_habits.jpg" data-gallery-title="21-Day Habit Challenge">
+                  Inspect Habits Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_21day_habits.jpg" alt="Habits screen screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Cash Ledger -->
+          <div class="academic-pane" id="pane-ledger" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text">
+                <span class="module-num">Module 07</span>
+                <h3 class="academic-heading">Student Cash Ledger & Export Engine</h3>
+                <p>
+                  Manage hostel expenses, textbook purchases, cafeteria spending, and student allowances. Filter by date range and export anytime to CSV or formatted PDF.
+                </p>
+                <ul class="check-list">
+                  <li>Real-time calculation of Current Ledger Balance, Total Income & Total Expense (in ₹ / currency)</li>
+                  <li>Categorized transactions with date, description, and expense/income radio toggles</li>
+                  <li>Complete Data Backup, Restore & Export: <strong>Import CSV</strong>, <strong>Export CSV</strong>, and <strong>PDF</strong> generation</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_student_ledger.jpg" data-gallery-title="Student Financial Ledger">
+                  Inspect Ledger Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_student_ledger.jpg" alt="Student Cash Ledger screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. 24h Routine Audit -->
+          <div class="academic-pane" id="pane-routine" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text">
+                <span class="module-num">Module 08</span>
+                <h3 class="academic-heading">24-Hour Time Routine Audit & Balanced Template</h3>
+                <p>
+                  Where do your 24 hours actually go? Audit your daily allocations into <strong>Useful</strong>, <strong>Necessary</strong>, <strong>Waste</strong>, and <strong>Free</strong> hours with automated percentage scores.
+                </p>
+                <ul class="check-list">
+                  <li>Monthly Routine Check-In prompt for recurring self-reflection</li>
+                  <li>One-tap "Load Student Template": Pre-allocates Sleep (7h), Self Study (4h), College (6h), Workout (2h), Relaxation (2h), and Commute Buffer (3h)</li>
+                  <li>Quick chips for instant logging: Sleep, Study, College, Gym, Waste</li>
+                  <li>Routine CSV backup & restore capabilities</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_24h_routine_audit.jpg" data-gallery-title="24h Routine Audit">
+                  Inspect Routine Audit Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_24h_routine_audit.jpg" alt="24h Routine Audit screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Activity Intelligence -->
+          <div class="academic-pane" id="pane-intel" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text">
+                <span class="module-num">Module 09</span>
+                <h3 class="academic-heading">Deep On-Device Activity Intelligence</h3>
+                <p>
+                  A privacy-preserving local intelligence engine that analyzes video titles, documentation queries, and app categories to evaluate goal alignment.
+                </p>
+                <ul class="check-list">
+                  <li>Detect YouTube video titles, Reels vs DMs, and website topics strictly on-device</li>
+                  <li>Estimated Goal Alignment: <strong>Aligned</strong> (Goals & Code), <strong>Relevant</strong> (Docs & Web), <strong>Off-Goal</strong> (Entertainment), and <strong>Neutral</strong> (Chats & Misc)</li>
+                  <li>Personal Intelligence Profile: Learns study windows and routines over observed sessions with user correction feedback</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_activity_intelligence.jpg" data-gallery-title="Activity Intelligence">
+                  Inspect Activity Intelligence &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_activity_intelligence.jpg" alt="Deep Activity Intelligence screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. Arrange Academic Sections -->
+          <div class="academic-pane" id="pane-arrange" role="tabpanel" hidden>
+            <div class="academic-split">
+              <div class="academic-text">
+                <span class="module-num">Module 10</span>
+                <h3 class="academic-heading">Arrange Academic Sections (Reorderable UI)</h3>
+                <p>
+                  Every student's routine is different. StudentFocus lets you rearrange the order of academic tabs forward or backward to place your most critical daily tools first.
+                </p>
+                <ul class="check-list">
+                  <li>Move sections forward or backward with single taps</li>
+                  <li>Instant "Reset Order" and "Done" controls</li>
+                  <li>Reordering applies instantly throughout the Academic tab strip</li>
+                </ul>
+                <button type="button" class="btn btn-outline view-gallery-btn" data-gallery-src="images/feature_academic_arrange_sections.jpg" data-gallery-title="Arrange Academic Sections">
+                  Inspect Arrange Modal Screen &rarr;
+                </button>
+              </div>
+              <div class="academic-image-card">
+                <img src="images/feature_academic_arrange_sections.jpg" alt="Arrange Academic Sections modal screenshot" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: STUDENTOS AI SECTION (OFFLINE VS ONLINE) -->
+    <section class="section" id="studentos-ai" aria-labelledby="ai-heading">
+      <div id="ai-study-assistant" class="anchor-offset"></div>
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge pill-badge-primary">Responsible AI Design</div>
+          <h2 class="section-title" id="ai-heading">StudentOS AI &mdash; On-Device Study Assistant &amp; Academic Companion</h2>
+          <p class="section-subtitle">
+            StudentFocus separates local assistance from cloud queries. Your personal notes, schedules, and routines are processed strictly on your hardware. Only deliberate general-knowledge questions connect to the internet.
+          </p>
+        </div>
+
+        <div class="ai-comparison-grid">
+          <!-- Offline Mode Card -->
+          <div class="ai-mode-card offline-card">
+            <div class="ai-card-header">
+              <div class="ai-mode-badge offline-badge">
+                <span class="mode-dot"></span>
+                Offline Mode (Default)
+              </div>
+              <span class="ai-privacy-pill">100% On-Device &bull; Private</span>
+            </div>
+            <div class="ai-screen-container">
+              <img src="images/feature_studentos_ai_offline.jpg" alt="StudentOS AI in Offline Mode" class="ai-screen-img" loading="lazy">
+            </div>
+            <div class="ai-card-details">
+              <h3 class="ai-mode-title">On-Device Command Companion</h3>
+              <p class="ai-mode-desc">
+                Engineered to manage and query your entire student database without transmitting a single byte over the network.
+              </p>
+              <div class="ai-command-box">
+                <span class="cmd-label">Supported Local Directives:</span>
+                <code>@help</code> &bull; <code>@task</code> &bull; <code>@routine</code> &bull; <code>@attendance</code> &bull; <code>@date</code> &bull; <code>@cgpa</code>
+              </div>
+              <ul class="ai-feature-list">
+                <li>Zero internet connection required</li>
+                <li>Zero telemetry or user logs sent to external servers</li>
+                <li>Instant response latency directly on your phone</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Online Mode Card -->
+          <div class="ai-mode-card online-card">
+            <div class="ai-card-header">
+              <div class="ai-mode-badge online-badge">
+                <span class="mode-dot"></span>
+                Online Mode (Optional)
+              </div>
+              <span class="ai-network-pill">Internet Required For Query</span>
+            </div>
+            <div class="ai-screen-container">
+              <img src="images/feature_studentos_ai_online.jpg" alt="StudentOS AI in Online Mode" class="ai-screen-img" loading="lazy">
+            </div>
+            <div class="ai-card-details">
+              <h3 class="ai-mode-title">General Academic Tutor</h3>
+              <p class="ai-mode-desc">
+                When you encounter a difficult academic concept, switch to Online mode to consult advanced reasoning models.
+              </p>
+              <div class="ai-command-box">
+                <span class="cmd-label">Example Academic Queries:</span>
+                <span class="sample-prompt">"What is polymorphism in Java?"</span> &bull; 
+                <span class="sample-prompt">"Derive Bernoulli's equation"</span>
+              </div>
+              <ul class="ai-feature-list">
+                <li>Explicit visual indicator when internet data is being used</li>
+                <li>Only the typed academic question is sent &mdash; personal app records remain on your phone</li>
+                <li>Multi-language support (English, Hinglish, Tanglish, Telugish)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: SETTINGS & CUSTOMIZATION SUITE -->
+    <section class="section bg-slate" id="settings" aria-labelledby="settings-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge">System Settings</div>
+          <h2 class="section-title" id="settings-heading">Comprehensive Security & System Controls</h2>
+          <p class="section-subtitle">
+            StudentFocus gives you total sovereignty over notifications, security locks, dashboard cards, and offline backups.
+          </p>
+        </div>
+
+        <div class="settings-showcase-grid">
+          <div class="settings-features-list">
+            <!-- 1. Biometric Lock -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">🔒</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">Biometric Lock Protection</h3>
+                <p>Secure StudentOS with fingerprint authentication, face unlock, or device PIN/pattern. Prevents unauthorized viewing of personal notes, grades, and financial ledgers.</p>
+              </div>
+            </div>
+
+            <!-- 2. JSON Backup & Recovery -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">💾</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">Offline JSON Backup & Recovery</h3>
+                <p>One-tap <strong>Export Backup JSON</strong> and <strong>Import Backup JSON</strong>. Seamlessly migrate your entire study history to a new Android phone without registering an account.</p>
+              </div>
+            </div>
+
+            <!-- 3. Notification Control Center -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">🔔</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">Granular Notification Control Center</h3>
+                <p>Toggle individual switches for: Live Ongoing Timer Bar in status tray, Session & Target Completion alerts, Daily Task Reminders (9:00 AM & 7:00 PM), Time Table Alarms, and Sound/Vibration.</p>
+              </div>
+            </div>
+
+            <!-- 4. Study Topics & Goals Keyword Matcher -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">🎯</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">Goal Keyword Engine</h3>
+                <p>Teach the Activity Intelligence what counts as goal-related study (e.g. kinematics, DSA, organic chemistry). App usage outside these keywords is flagged as idle time waste.</p>
+              </div>
+            </div>
+
+            <!-- 5. Multilingual AI Assistant -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">🤖</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">Multilingual Assistant Tuning</h3>
+                <p>Select preferred output languages for assistant responses: Auto-Detect, English, Hinglish, Tanglish (Tamil-English), and Telugish (Telugu-English).</p>
+              </div>
+            </div>
+
+            <!-- 6. Customize Dashboard Presets -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">🎨</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">Customize Dashboard & Quick Presets</h3>
+                <p>Toggle visibility of all 12 dashboard cards or select presets: <strong>All (Default)</strong>, <strong>Minimal Focus</strong> (Timer + Tasks + Notes), or <strong>Academic Scholar</strong> (Exams + Tasks + Pace).</p>
+              </div>
+            </div>
+
+            <!-- 7. On-Device Privacy & Security -->
+            <div class="setting-item-card">
+              <div class="setting-item-icon">🛡️</div>
+              <div class="setting-item-text">
+                <h3 class="setting-item-title">On-Device Privacy &amp; Data Sovereignty</h3>
+                <p>All routines, flashcards, ledger transactions, grades, and study timer logs are stored exclusively in your local SQLite/Room database. Zero background analytics, zero trackers, and zero telemetry.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-visual-col">
+            <div class="dual-mockup-wrapper">
+              <div class="device-frame settings-phone">
+                <div class="phone-status-bar">
+                  <span class="status-time live-local-time">--:--</span>
+                  <div class="status-notch"><span class="camera-lens"></span></div>
+                  <div class="status-icons">
+                    <span class="network-badge">5G</span>
+                    <div class="battery-icon"><span class="battery-level"></span></div>
+                  </div>
+                </div>
+                <div class="scrollable-viewport-settings">
+                  <img src="images/feature_settings_full_center.jpg" alt="StudentFocus Settings Screen" class="app-screenshot" loading="lazy">
+                </div>
+                <div class="mockup-label">Settings Center (Scrollable)</div>
+              </div>
+
+              <div class="device-frame customize-phone">
+                <div class="phone-status-bar">
+                  <span class="status-time live-local-time">--:--</span>
+                  <div class="status-notch"><span class="camera-lens"></span></div>
+                  <div class="status-icons">
+                    <span class="network-badge">5G</span>
+                    <div class="battery-icon"><span class="battery-level"></span></div>
+                  </div>
+                </div>
+                <div class="static-viewport">
+                  <img src="images/feature_customize_dashboard.jpg" alt="Customize Dashboard Screen" class="app-screenshot" loading="lazy">
+                </div>
+                <div class="mockup-label">Customize Dashboard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: INSTALLATION & APK DOWNLOAD GUIDE -->
+    <section class="section" id="installation" aria-labelledby="install-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge pill-badge-primary">Official APK Setup</div>
+          <h2 class="section-title" id="install-heading">Download & Install StudentFocus</h2>
+          <p class="section-subtitle">
+            StudentFocus is distributed directly via official GitHub release builds. Follow the simple steps below to install and run it safely on your Android device.
+          </p>
+        </div>
+
+        <!-- Download Banner Card -->
+        <div class="download-hero-card">
+          <div class="dl-card-content">
+            <div class="dl-card-text">
+              <span class="dl-release-tag">Official GitHub Release &bull; Version 5.0</span>
+              <h3 class="dl-file-name">StudentFocus — 5.apk</h3>
+              <p class="dl-summary">
+                Direct release binary built directly from the verified source code repository. Safe, self-contained, and requiring no external proprietary framework dependencies.
+              </p>
+              
+              <div class="dl-actions-with-counter">
+                <div class="dl-main-action-row">
+                  <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk" class="btn btn-primary btn-xl dl-btn-flex" id="install-cta-btn" itemprop="downloadUrl">
+                    <svg class="icon-md" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Download Release APK</span>
+                  </a>
+
+                  <!-- Live Verified Download Counter Badge Beside Download Button -->
+                  <div class="download-counter-pill" id="install-download-counter" aria-label="Official APK Download Count" itemprop="interactionStatistic" itemscope itemtype="https://schema.org/InteractionCounter" title="Live release downloads from official GitHub releases">
+                    <meta itemprop="interactionType" content="https://schema.org/DownloadAction">
+                    <span class="live-dot" aria-hidden="true"></span>
+                    <div class="counter-body">
+                      <span class="counter-label">Verified Downloads</span>
+                      <strong class="counter-value" itemprop="userInteractionCount" id="install-download-count">33</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block text-center">
+                  Inspect Apk on GitHub
+                </a>
+              </div>
+
+              <div class="dl-specs-inline">
+                <span><strong>Platform:</strong> Android 8.0+</span>
+                <span><strong>Package:</strong> Standalone .apk</span>
+                <span><strong>Source:</strong> Official GitHub Release</span>
+              </div>
+            </div>
+
+            <!-- Beside Download Button: APK Installation & Play Protect -->
+            <div class="dl-card-side">
+              <div class="setting-item-card dl-playprotect-card">
+                <div class="setting-item-icon">🛡️</div>
+                <div class="setting-item-text">
+                  <h3 class="setting-item-title">APK Installation &amp; Play Protect</h3>
+                  <p>
+                    If Android blocks the StudentFocus APK, follow these steps:
+                  </p>
+                  <ol>
+                    <li>Download the APK only from the <strong>official StudentFocus release</strong>.</li>
+                    <li>Open the <strong>Google Play Store</strong>.</li>
+                    <li>Tap your <strong>profile icon</strong> in the top-right corner.</li>
+                    <li>Select <strong>Play Protect</strong>.</li>
+                    <li>Tap the <strong>Settings</strong> icon.</li>
+                    <li>If Play Protect is blocking a verified APK, carefully review the warning before proceeding.</li>
+                    <li>Keep <strong>Play Protect enabled whenever possible</strong>.</li>
+                    <li>If you temporarily disable app scanning, <strong>turn it back on immediately after installation</strong>.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step-by-Step Installation Cards -->
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-badge">1</div>
+            <h3 class="step-title">Download APK</h3>
+            <p class="step-desc">
+              Tap the download button above or visit the official GitHub Releases page to download <code>5.apk</code> to your device.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">2</div>
+            <h3 class="step-title">Open Downloaded File</h3>
+            <p class="step-desc">
+              When the download finishes, tap the completed download notification or open <code>5.apk</code> from your browser's Downloads or the Files app.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">3</div>
+            <h3 class="step-title">Allow Unknown Sources</h3>
+            <p class="step-desc">
+              If Android displays a security prompt asking to install from unknown sources, toggle the permission to <strong>Allow</strong> for your current browser or file manager.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">4</div>
+            <h3 class="step-title">Install & Launch</h3>
+            <p class="step-desc">
+              Tap <strong>Install</strong>. Once installation completes, tap <strong>Open</strong> to start your first session. You can re-disable the install permission in Android Settings anytime.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: ACCORDION FAQ & TROUBLESHOOTING -->
+    <section class="section bg-slate" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge">Troubleshooting Guide</div>
+          <h2 class="section-title" id="faq-heading">Frequently Asked Questions & Help</h2>
+          <p class="section-subtitle">
+            Encountering an issue during installation or setup? Find short, practical solutions below.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <!-- Item 1: What is StudentFocus -->
+          <details class="faq-accordion" open>
+            <summary class="faq-summary">
+              <span class="faq-question">What is StudentFocus?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                StudentFocus is an AI-powered student productivity and study management application for Android (Android 8.0+). It combines an on-device focus stopwatch, 24-hour study heatmap, time waste auditor, Kanban task board, local study notes, class timetables, attendance tracking, GPA/CGPA calculators, 21-day habit challenges, and dual-mode StudentOS AI.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 2: Who is StudentFocus designed for -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">Who is StudentFocus designed for?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                StudentFocus is designed for school, college, and university students, as well as students preparing for competitive or semester exams. It is built for scholars who want an integrated, distraction-free environment to organize assignments, schedules, attendance, and study routines with complete on-device privacy and zero cloud lock-in.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 3: What can students do with StudentFocus -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">What can students do with StudentFocus?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>Students can:</p>
+              <ul>
+                <li><strong>Plan Studies:</strong> Use the Study Pace &amp; Goal Planner to calculate achievable daily hours within a 24-hour budget.</li>
+                <li><strong>Manage Assignments:</strong> Track coursework across four Kanban stages (Uncomplete, To Do, In Progress, Done).</li>
+                <li><strong>Organize Class Schedules:</strong> Build Monday-to-Saturday weekly timetables with automated routine alarms.</li>
+                <li><strong>Track Attendance:</strong> Monitor subject-wise attendance percentages to stay safely above 75% or 80% exam eligibility thresholds.</li>
+                <li><strong>Calculate Grades:</strong> Accurately calculate credit-weighted Semester Subject GPA and cumulative degree CGPA.</li>
+                <li><strong>Focus &amp; Time Sessions:</strong> Run high-precision focus stopwatch blocks with ambient sounds and notification tray status.</li>
+                <li><strong>Prepare for Exams:</strong> Practice with revision flashcard decks and monitor countdown targets to test dates.</li>
+                <li><strong>Build Habits:</strong> Maintain 21-day habit streaks and audit 24-hour routines into useful, necessary, and wasted hours.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Item 4: Does StudentFocus have an AI study assistant -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">Does StudentFocus have an AI study assistant?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Yes. StudentFocus features <strong>StudentOS AI</strong> with a dual-mode architecture:
+              </p>
+              <ul>
+                <li><strong>Offline Mode (Default):</strong> An on-device assistant that executes local directives (<code>@help</code>, <code>@task</code>, <code>@routine</code>, <code>@attendance</code>, <code>@cgpa</code>, <code>@date</code>) without network access, querying your local SQLite database directly.</li>
+                <li><strong>Online Mode (Optional):</strong> A conceptual academic tutor for difficult theoretical questions (e.g., <em>"What is polymorphism in Java?"</em>). Personal notes, schedules, and grades never leave your phone.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Item 5: Can StudentFocus work offline -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">Can StudentFocus work offline?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Yes. StudentFocus is an offline-first application. All core features—including the focus timer, notes, timetable, attendance tracker, flashcards, 21-day habits, financial ledger, and Offline StudentOS AI—operate 100% locally on your phone using local SQLite storage without internet access or account registration.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 6: Does StudentFocus help with exam preparation -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">Does StudentFocus help with exam preparation?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Yes. StudentFocus provides dedicated exam preparation tools including exam countdown targets, credit-weighted GPA/CGPA calculators with reappear status flags, revision flashcard decks for spaced active recall, and attendance margin tracking to protect exam eligibility.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 7: How to download and install StudentFocus APK -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">How to download and install StudentFocus APK?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Download the official release binary (<code>5.apk</code>) from the official GitHub Releases link. Open the downloaded file, allow unknown sources permission for your browser or file manager if prompted by Android, and tap <strong>Install</strong>. No account or registration is required.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 8: Play Protect warning -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">Why does Google Play Protect show a warning? (APK Installation Guide)</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Google Play Protect automatically flags packages downloaded outside the Google Play Store because the application has not been submitted through Google's commercial publishing portal.
+              </p>
+
+              <!-- APK Installation & Play Protect -->
+              <div class="setting-item-card faq-playprotect-card">
+                <div class="setting-item-icon">🛡️</div>
+                <div class="setting-item-text">
+                  <h3 class="setting-item-title">APK Installation &amp; Play Protect</h3>
+                  <p>
+                    If Android blocks the StudentFocus APK, follow these steps:
+                  </p>
+                  <ol>
+                    <li>Download the APK only from the <strong>official StudentFocus release</strong>.</li>
+                    <li>Open the <strong>Google Play Store</strong>.</li>
+                    <li>Tap your <strong>profile icon</strong> in the top-right corner.</li>
+                    <li>Select <strong>Play Protect</strong>.</li>
+                    <li>Tap the <strong>Settings</strong> icon.</li>
+                    <li>If Play Protect is blocking a verified APK, carefully review the warning before proceeding.</li>
+                    <li>Keep <strong>Play Protect enabled whenever possible</strong>.</li>
+                    <li>If you temporarily disable app scanning, <strong>turn it back on immediately after installation</strong>.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="notice-box">
+                <strong>Important Safety Recommendation:</strong>
+                Always verify that your APK was downloaded directly from the official repository release: <code>https://github.com/nishantkumar-AIML/StudentFocus</code>. 
+                Keep Play Protect enabled on your device. When the prompt appears on an APK you have independently verified, tap <strong>"More details"</strong> followed by <strong>"Install anyway"</strong>.
+                <p style="margin-top: 0.75rem; margin-bottom: 0;">
+                  Official Step-by-Step Installation Guide: <a href="https://studentfocus-apk.vercel.app/#installation" style="color: var(--brand-primary); font-weight: 600;">https://studentfocus-apk.vercel.app/#installation</a>
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Item 9: App not installed -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">What should I do if Android shows "App not installed"?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>This message typically occurs due to one of four common reasons:</p>
+              <ul>
+                <li><strong>Insufficient Storage Space:</strong> Check that your phone has at least 250MB of free internal storage.</li>
+                <li><strong>Incomplete Download:</strong> Delete the file and re-download <code>5.apk</code> over a stable Wi-Fi connection.</li>
+                <li><strong>Existing Conflicting Version:</strong> If you previously installed a test build with a differing signing key, uninstall the older version before installing the release build.</li>
+                <li><strong>Android Version Compatibility:</strong> Ensure your phone runs Android 8.0 (Oreo) or later.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Item 10: APK won't open -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">What if the APK won't open or says "Cannot open file"?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Some mobile browsers lack built-in package installers. Open your device's native <strong>Files</strong> or <strong>Downloads</strong> manager app, navigate to the <code>Download</code> folder, and tap <code>5.apk</code> directly from there. Ensure the file name ends in <code>.apk</code> and has not been saved as <code>.zip</code>.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 11: App crashes after installation -->
+          <details class="faq-accordion">
+            <summary class="faq-summary">
+              <span class="faq-question">What if the app crashes after installation?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              <p>
+                Try the following diagnostic steps:
+              </p>
+              <ol>
+                <li>Restart your phone to clear temporary OS memory locks.</li>
+                <li>Verify your phone has sufficient internal storage space available.</li>
+                <li>Clear application cache via <em>Android Settings &gt; Apps &gt; StudentFocus &gt; Storage &gt; Clear Cache</em>.</li>
+                <li>If the crash persists, report the issue with your device model and Android version on our <a href="https://github.com/nishantkumar-AIML/StudentFocus/issues" target="_blank" rel="noopener noreferrer">official GitHub Issues page</a>.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: ABOUT STUDENTFOCUS & PROJECT IDENTITY -->
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge pill-badge-primary">Project Identity &amp; Philosophy</div>
+          <h2 class="section-title" id="about-heading">About StudentFocus</h2>
+          <p class="section-subtitle">
+            An independent, student-first productivity and study management platform built to cultivate real focus and academic discipline.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="card-icon icon-indigo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">What is StudentFocus?</h3>
+            <p class="card-text">
+              StudentFocus is an AI-powered student productivity and study management application for Android (Android 8.0+). It unifies core academic tools—study planning, timetables, attendance tracking, exam preparation, focus timers, GPA/CGPA calculators, flashcards, and private StudentOS AI—into a distraction-free, 100% offline environment.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon icon-emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Who Built It &amp; Why</h3>
+            <p class="card-text">
+              Created by <a href="https://github.com/nishantkumar-AIML" target="_blank" rel="noopener noreferrer"><strong>Nishant Kumar</strong></a>, StudentFocus was developed to solve a critical problem for school and university students: the distraction, aggressive monetisation, and intrusive tracking of modern student apps. StudentFocus is completely free, ad-free, and respects your privacy.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon icon-rose">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">100% On-Device Privacy</h3>
+            <p class="card-text">
+              All personal academic data—including notes, class timetables, attendance records, study routines, and financial ledgers—resides strictly inside your Android phone's local SQLite storage. No remote database synchronization, no user account requirement, and zero background analytics.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon icon-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Student-First Design Principles</h3>
+            <p class="card-text">
+              Every feature is built around the honest realities of academic life: calculating semester GPA using official 10-point credit formulas, tracking 75% attendance thresholds to protect exam eligibility, timing deep work sessions with ambient noise, and planning daily study pace without notification spam.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: FINAL DOWNLOAD CTA -->
+    <section class="section final-cta-section" id="download" aria-labelledby="cta-heading">
+      <div class="container text-center">
+        <div class="cta-card">
+          <img src="images/studentfocus_app_icon.jpg" alt="StudentFocus Emblem" class="cta-logo" width="80" height="80">
+          <h2 class="cta-title" id="cta-heading">Take Control of Your Academic Life Today</h2>
+          <p class="cta-subtitle">
+            No advertisements. No subscription models. No background cloud tracking. Just a pure, focused productivity environment built for serious students.
+          </p>
+          <div class="hero-cta-group justify-center">
+            <div class="cta-btn-with-counter">
+              <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk" class="btn btn-primary btn-xl">
+                <svg class="icon-md" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+                <span>Download Official Release APK</span>
+              </a>
+              <div class="cta-counter-pill" title="Verified releases downloaded">
+                <span class="live-dot" aria-hidden="true"></span>
+                <span>Verified Downloads: <strong id="cta-download-count">33</strong></span>
+              </div>
+            </div>
+            <a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xl">
+              <svg class="icon-md" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>GitHub Repository</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SCREENSHOT VIEWER MODAL / LIGHTBOX -->
+  <div class="modal-backdrop" id="screenshot-modal" role="dialog" aria-modal="true" aria-labelledby="modal-screen-title" hidden>
+    <div class="modal-dialog">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge" id="modal-counter">Screen 1 of 18</span>
+          <h3 class="modal-screen-name" id="modal-screen-title">Screen Title</h3>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-icon" id="modal-prev-btn" aria-label="Previous screenshot">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </button>
+          <button type="button" class="btn-icon" id="modal-next-btn" aria-label="Next screenshot">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </button>
+          <button type="button" class="btn-icon" id="modal-close-btn" aria-label="Close screenshot viewer">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Realistic Mobile Frame inside Modal with Dynamic Local Time -->
+      <div class="modal-body">
+        <div class="device-frame modal-phone" id="modal-phone-frame">
+          <div class="phone-status-bar">
+            <!-- Dynamic Visitor Local Time (Never hardcoded!) -->
+            <span class="status-time live-local-time">--:--</span>
+            <div class="status-notch"><span class="camera-lens"></span></div>
+            <div class="status-icons">
+              <span class="network-badge">5G</span>
+              <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+              </svg>
+              <div class="battery-icon"><span class="battery-level"></span></div>
+            </div>
+          </div>
+
+          <div class="modal-scroll-viewport" id="modal-scroll-box" tabindex="0">
+            <img src="images/feature_dashboard_full.jpg" alt="StudentFocus screenshot view" class="modal-active-img" id="modal-img">
+          </div>
+
+          <div class="phone-home-pill" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Modal Footer Caption & Controls -->
+      <div class="modal-footer">
+        <p class="modal-caption-text" id="modal-caption">Screen description goes here.</p>
+        <span class="modal-hint">Swipe left/right or use keyboard arrows to browse</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="images/studentfocus_app_icon.jpg" alt="StudentFocus Icon" class="footer-logo" width="36" height="36">
+          <span class="footer-brand-name">StudentFocus</span>
+        </div>
+        <p class="footer-tagline">Study. Focus. Progress.</p>
+        <p class="footer-desc">
+          An AI-powered on-device student productivity and study management application for Android. Built to help scholars organize timetables, attendance, assignments, and exam preparation with zero cloud lock-in.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Student Features</h4>
+        <ul class="footer-links">
+          <li><a href="study-planner">Study Planner &amp; Pace</a></li>
+          <li><a href="student-timetable">Weekly Class Timetable</a></li>
+          <li><a href="attendance">Attendance Tracker</a></li>
+          <li><a href="exam-preparation">Exam Preparation</a></li>
+          <li><a href="gpa-cgpa">Subject GPA &amp; CGPA</a></li>
+          <li><a href="focus-timer">Focus Stopwatch Timer</a></li>
+          <li><a href="assignment-manager">Assignment Task Board</a></li>
+          <li><a href="flashcards">Revision Flashcards</a></li>
+          <li><a href="ai-study-assistant">StudentOS AI Companion</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Installation &amp; Help</h4>
+        <ul class="footer-links">
+          <li><a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk">Download Release 5.apk</a></li>
+          <li><a href="#installation">Installation Steps</a></li>
+          <li><a href="#faq">Troubleshooting &amp; FAQ</a></li>
+          <li><a href="https://github.com/nishantkumar-AIML/StudentFocus/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Source &amp; Transparency</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About StudentFocus</a></li>
+          <li><a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          <li><a href="https://github.com/nishantkumar-AIML/StudentFocus/releases" target="_blank" rel="noopener noreferrer">All Release Builds</a></li>
+          <li><span class="footer-pill-notice">Not available on Google Play</span></li>
+          <li><span class="footer-pill-notice">Full Offline &bull; Zero Tracking</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="copyright-text">
+        &copy; <span id="current-year">2026</span> StudentFocus &mdash; Built with dedication for independent scholars.
+      </p>
+      <div class="footer-bottom-badges">
+        <span class="privacy-note">Privacy First &bull; 100% On-Device Records</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=3.0.0"></script>
+</body>
+</html>
