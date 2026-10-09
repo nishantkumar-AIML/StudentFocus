@@ -1,0 +1,68 @@
+# ==============================================================================
+# StudentFocus — Airtight .gitignore (Zero Leakage Security Standard)
+# ==============================================================================
+
+# OS Metadata & Thumbnails
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Secrets, Authentication, Tokens & Private Keys
+*.env
+*.env.*
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+*.jks
+*.keystore
+id_rsa*
+id_ecdsa*
+id_ed25519*
+credentials*.json
+service-account*.json
+token*.json
+secrets/
+
+# IDE & Editor Workspaces
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Logs & Temporary Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.bak
+
+# Dependencies & Build Outputs
+node_modules/
+dist/
+build/
+.cache/
+
+# Local AI / Scratch Directories
+.gemini/
+scratch/

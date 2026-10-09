@@ -1,0 +1,15 @@
+{
+  "name": "studentfocus",
+  "version": "1.0.0",
+  "description": "StudentFocus App website and build pipeline",
+  "scripts": {
+    "build": "node build.js",
+    "sync": "node scripts/sync-downloads.js"
+  },
+  "dependencies": {
+    "clean-css": "^5.3.3",
+    "javascript-obfuscator": "^5.8.1",
+    "mongodb": "^7.7.0",
+    "terser": "^5.51.2"
+  }
+}
