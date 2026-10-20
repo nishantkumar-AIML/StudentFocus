@@ -2436,12 +2436,20 @@ code {
   color: var(--brand-primary-hover);
 }
 
-/* Top Hero Feedback Callout */
+/* Top Hero Prompts */
+.hero-prompts-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.15rem;
+}
+
+.hero-install-prompt,
 .hero-feedback-prompt {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.15rem;
   padding: 0.45rem 1rem;
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -2449,6 +2457,13 @@ code {
   font-size: 0.85rem;
   color: var(--text-secondary);
   box-shadow: var(--shadow-xs);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.hero-install-prompt:hover,
+.hero-feedback-prompt:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
 }
 
 .prompt-icon {
