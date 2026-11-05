@@ -12,6 +12,7 @@ const path = require('path');
 const CANONICAL_BASE = 'https://studentfocus-apk.vercel.app';
 const REPO_URL = 'https://github.com/nishantkumar-AIML/StudentFocus';
 const APK_DOWNLOAD_URL = '/api/download';
+const DIRECT_APK_DOWNLOAD_URL = 'https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk';
 
 const PAGES = [
   {
@@ -547,7 +548,7 @@ function generateHtml(page) {
         'applicationCategory': ['EducationalApplication', 'ProductivityApplication'],
         'softwareVersion': '5.0',
         'url': CANONICAL_BASE,
-        'downloadUrl': APK_DOWNLOAD_URL,
+        'downloadUrl': DIRECT_APK_DOWNLOAD_URL,
         'installUrl': `${CANONICAL_BASE}/#installation`,
         'offers': {
           '@type': 'Offer',
@@ -726,7 +727,7 @@ function generateHtml(page) {
           </svg>
           <span class="btn-text">GitHub</span>
         </a>
-        <a href="${APK_DOWNLOAD_URL}" download="StudentFocus-v5.apk" class="btn btn-primary" aria-label="Download Official Release APK">
+        <a href="${APK_DOWNLOAD_URL}" download="StudentFocus.apk" class="btn btn-primary" aria-label="Download Official Release APK">
           <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
           </svg>
@@ -762,7 +763,7 @@ function generateHtml(page) {
           </p>
 
           <div class="hero-cta-group">
-            <a href="${APK_DOWNLOAD_URL}" download="StudentFocus-v5.apk" class="btn btn-primary btn-lg">
+            <a href="${APK_DOWNLOAD_URL}" download="StudentFocus.apk" class="btn btn-primary btn-lg">
               <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
               </svg>
@@ -887,7 +888,7 @@ function generateHtml(page) {
             Download StudentFocus v5.0 for Android. Completely free, offline-first, and zero tracking.
           </p>
           <div class="hero-cta-group justify-center">
-            <a href="${APK_DOWNLOAD_URL}" download="StudentFocus-v5.apk" class="btn btn-primary btn-xl">
+            <a href="${APK_DOWNLOAD_URL}" download="StudentFocus.apk" class="btn btn-primary btn-xl">
               <svg class="icon-md" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
               </svg>
@@ -934,7 +935,7 @@ function generateHtml(page) {
       <div class="footer-col">
         <h4 class="footer-heading">Installation &amp; Help</h4>
         <ul class="footer-links">
-          <li><a href="${APK_DOWNLOAD_URL}" download="StudentFocus-v5.apk">Download Release APK (v5.0)</a></li>
+          <li><a href="${APK_DOWNLOAD_URL}" download="StudentFocus.apk">Download Release APK (v5.0)</a></li>
           <li><a href="${CANONICAL_BASE}/#installation">Installation &amp; Play Protect Guide</a></li>
           <li><a href="/#faq">Troubleshooting &amp; FAQ</a></li>
           <li><a href="${REPO_URL}/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>

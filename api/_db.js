@@ -1,24 +1,70 @@
 /**
  * StudentFocus — MongoDB Atlas Connection & Data Layer
  * 
- * Manages connections, download counts, and student feedback.
- * Includes graceful zero-downtime fallback when MONGODB_URI is not set.
+ * Manages secure database connections, verified download telemetry,
+ * and community student reviews.
+ * 
+ * SECURITY: All connection strings must be provided via environment variables.
+ * No credentials or secrets are stored in this file.
  */
 
 const { MongoClient } = require('mongodb');
+const fs = require('fs');
+const path = require('path');
 
 let cachedClient = null;
 let cachedDb = null;
-
-// Local fallback store if MONGODB_URI is not yet configured in Vercel environment
-const localStore = {
-  downloads: [],
-  downloadCount: 57,
-  feedback: []
-};
-
 let lastConnectionError = null;
 
+const FEEDBACK_FILE = path.join(process.cwd(), 'data', 'feedback.json');
+const DOWNLOADS_FILE = path.join(process.cwd(), 'data', 'downloads.json');
+
+/**
+ * Load verified community feedback from persistent data file
+ */
+function loadSeedFeedback() {
+  try {
+    if (fs.existsSync(FEEDBACK_FILE)) {
+      const raw = fs.readFileSync(FEEDBACK_FILE, 'utf8');
+      const data = JSON.parse(raw);
+      if (Array.isArray(data)) {
+        return data;
+      }
+    }
+  } catch (err) {
+    console.warn('Notice reading feedback.json:', err.message);
+  }
+  return [];
+}
+
+/**
+ * Load verified download count from local persistent file
+ */
+function loadStoredDownloads() {
+  try {
+    if (fs.existsSync(DOWNLOADS_FILE)) {
+      const raw = fs.readFileSync(DOWNLOADS_FILE, 'utf8');
+      const data = JSON.parse(raw);
+      if (typeof data.total === 'number') {
+        return data;
+      }
+    }
+  } catch (e) {}
+  return { total: 0, events: [] };
+}
+
+const initialDownloads = loadStoredDownloads();
+
+// Local fallback store
+const localStore = {
+  downloads: initialDownloads.events || [],
+  downloadCount: initialDownloads.total || 0,
+  feedback: loadSeedFeedback()
+};
+
+/**
+ * Connect to MongoDB Atlas strictly using environment variables
+ */
 async function connectToDatabase() {
   if (cachedDb) {
     return { client: cachedClient, db: cachedDb, isMongo: true };
@@ -26,7 +72,7 @@ async function connectToDatabase() {
 
   const uri = process.env.MONGODB_URI || process.env.MONGO_URI || process.env.ATLAS_URI;
   if (!uri) {
-    lastConnectionError = 'No database connection string configured in environment variables';
+    lastConnectionError = 'No database connection string configured in environment variables (MONGODB_URI)';
     return { client: null, db: null, isMongo: false, error: 'NO_URI' };
   }
 
@@ -38,6 +84,7 @@ async function connectToDatabase() {
     });
 
     await client.connect();
+    // Default to 'studentfocus' database where official collections reside
     const db = client.db('studentfocus');
 
     cachedClient = client;
@@ -46,7 +93,7 @@ async function connectToDatabase() {
     return { client, db, isMongo: true };
   } catch (err) {
     lastConnectionError = err.message;
-    console.warn('MongoDB connection fallback:', err.message);
+    console.warn('MongoDB connection notice:', err.message);
     return { client: null, db: null, isMongo: false, error: err.message };
   }
 }
@@ -68,24 +115,44 @@ function getClientIp(req) {
   return req.headers['x-real-ip'] || req.socket?.remoteAddress || '127.0.0.1';
 }
 
+function maskIp(ip) {
+  if (!ip) return '103.xxx.xxx';
+  const parts = String(ip).split('.');
+  if (parts.length === 4) {
+    return `${parts[0]}.${parts[1]}.xxx.xxx`;
+  }
+  return ip.substring(0, 7) + '...';
+}
+
 /**
  * Record a download event and increment total downloads
  */
 async function recordDownload(ip, userAgent) {
   const { db, isMongo } = await connectToDatabase();
   const timestamp = new Date();
+  const maskedIp = maskIp(ip);
 
+  // 1. Update local memory and persistent file
+  localStore.downloads.push({ ip: maskedIp, userAgent: userAgent || 'Unknown', timestamp });
+  localStore.downloadCount += 1;
+
+  try {
+    fs.writeFileSync(DOWNLOADS_FILE, JSON.stringify({
+      total: localStore.downloadCount,
+      events: localStore.downloads.slice(-500)
+    }, null, 2), 'utf8');
+  } catch (e) {}
+
+  // 2. Persist to MongoDB Atlas if connected
   if (isMongo && db) {
     try {
-      // 1. Record individual download with IP and metadata
       await db.collection('downloads').insertOne({
-        ip,
+        ip: maskedIp,
         userAgent: userAgent || 'Unknown',
         timestamp,
         type: 'apk_download'
       });
 
-      // 2. Increment global stats
       const stats = await db.collection('stats').findOneAndUpdate(
         { _id: 'global_stats' },
         { 
@@ -95,15 +162,12 @@ async function recordDownload(ip, userAgent) {
         { upsert: true, returnDocument: 'after' }
       );
 
-      return stats?.value?.totalDownloads || stats?.totalDownloads || null;
+      return stats?.value?.totalDownloads || stats?.totalDownloads || localStore.downloadCount;
     } catch (err) {
-      console.warn('Error recording download to MongoDB:', err.message);
+      console.warn('MongoDB download insert notice:', err.message);
     }
   }
 
-  // Fallback store
-  localStore.downloads.push({ ip, userAgent, timestamp });
-  localStore.downloadCount += 1;
   return localStore.downloadCount;
 }
 
@@ -145,9 +209,7 @@ const OFFICIAL_FEATURE_FOLDERS = {
 };
 
 /**
- * Save user feedback:
- * - If user selects an official feature: saves in that feature's dedicated folder + feedback
- * - If user types their own custom feature: saves under feedback ONLY
+ * Save user feedback
  */
 async function saveFeedback(feedbackData) {
   const { db, isMongo } = await connectToDatabase();
@@ -156,12 +218,13 @@ async function saveFeedback(feedbackData) {
   const isCustom = !officialFolder;
 
   const doc = {
+    id: `fb-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
     name: feedbackData.name || 'Anonymous Student',
     category: rawCategory,
     isCustomFeature: isCustom,
     rating: Number(feedbackData.rating) || 5,
     message: String(feedbackData.message).trim().slice(0, 1000),
-    ip: feedbackData.ip || '127.0.0.1',
+    ip: maskIp(feedbackData.ip),
     userAgent: feedbackData.userAgent || 'Unknown',
     createdAt: new Date(),
     approved: true
@@ -171,16 +234,28 @@ async function saveFeedback(feedbackData) {
     doc.featureFolder = officialFolder;
   }
 
+  // Prepend to local store
+  localStore.feedback.unshift(doc);
+
+  try {
+    const toSave = localStore.feedback.slice(0, 60).map(item => ({
+      id: item.id || (item._id ? item._id.toString() : `fb-${Date.now()}`),
+      name: item.name,
+      category: item.category,
+      rating: item.rating,
+      message: item.message,
+      createdAt: item.createdAt
+    }));
+    fs.writeFileSync(FEEDBACK_FILE, JSON.stringify(toSave, null, 2), 'utf8');
+  } catch (err) {}
+
   if (isMongo && db) {
     try {
       let result;
       if (officialFolder) {
-        // 1. Official feature: save into that feature's dedicated collection / folder
         await db.collection(officialFolder).insertOne({ ...doc });
-        // Also save into central community stream collection
         result = await db.collection('feedback').insertOne(doc);
       } else {
-        // 2. Custom feature typed by user: saves under feedback ONLY!
         result = await db.collection('feedback').insertOne(doc);
       }
 
@@ -194,18 +269,9 @@ async function saveFeedback(feedbackData) {
       };
       return { success: true, id: result.insertedId, doc: clientDoc };
     } catch (err) {
-      console.warn('Data layer persistence note:', err.message);
+      console.warn('MongoDB feedback write notice:', err.message);
     }
   }
-
-  // Fallback store
-  doc.id = `fb-record-${Date.now()}`;
-  if (officialFolder) {
-    if (!localStore.featureFolders) localStore.featureFolders = {};
-    if (!localStore.featureFolders[officialFolder]) localStore.featureFolders[officialFolder] = [];
-    localStore.featureFolders[officialFolder].unshift({ ...doc });
-  }
-  localStore.feedback.unshift(doc);
 
   const clientDoc = {
     id: doc.id,
@@ -219,37 +285,31 @@ async function saveFeedback(feedbackData) {
 }
 
 /**
- * Get recent feedback for display (strictly sanitizes away internal IP address)
+ * Get recent feedback for display
  */
-async function getRecentFeedback(limit = 10) {
+async function getRecentFeedback(limit = 12) {
   const { db, isMongo } = await connectToDatabase();
 
   if (isMongo && db) {
     try {
       const items = await db.collection('feedback')
-        .find({ 
-          approved: { $ne: false },
-          id: { $not: /^fb-seed-/ }
-        })
+        .find({ approved: { $ne: false } })
         .sort({ createdAt: -1 })
         .limit(limit)
         .toArray();
 
       if (items && items.length > 0) {
-        return items
-          .filter(item => !item.id?.startsWith('fb-seed-'))
-          .map(item => ({
-            id: item._id ? item._id.toString() : item.id,
-            name: item.name,
-            category: item.category,
-            rating: item.rating,
-            message: item.message,
-            createdAt: item.createdAt
-          }));
+        return items.map(item => ({
+          id: item._id ? item._id.toString() : item.id,
+          name: item.name,
+          category: item.category,
+          rating: item.rating,
+          message: item.message,
+          createdAt: item.createdAt
+        }));
       }
-      return [];
     } catch (err) {
-      console.warn('Error fetching feedback from MongoDB:', err.message);
+      console.warn('MongoDB feedback read notice:', err.message);
     }
   }
 
@@ -264,7 +324,7 @@ async function getRecentFeedback(limit = 10) {
 }
 
 /**
- * Get stored download count from MongoDB
+ * Get stored download count from MongoDB or local store
  */
 async function getMongoDownloadCount() {
   const { db, isMongo } = await connectToDatabase();
@@ -275,21 +335,14 @@ async function getMongoDownloadCount() {
       if (stats && typeof stats.totalDownloads === 'number') {
         return stats.totalDownloads;
       }
+      const count = await db.collection('downloads').countDocuments();
+      if (count > 0) return count;
     } catch (err) {
-      console.warn('Error reading stats from MongoDB:', err.message);
+      console.warn('MongoDB stats read notice:', err.message);
     }
   }
 
   return localStore.downloadCount;
-}
-
-function maskIp(ip) {
-  if (!ip) return '103.xxx.xxx';
-  const parts = String(ip).split('.');
-  if (parts.length === 4) {
-    return `${parts[0]}.${parts[1]}.xxx.xxx`;
-  }
-  return ip.substring(0, 7) + '...';
 }
 
 module.exports = {

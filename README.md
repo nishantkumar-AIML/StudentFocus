@@ -12,8 +12,8 @@
   <a href="https://studentfocus-apk.vercel.app/">
     <img src="https://img.shields.io/badge/Official_Website-studentfocus--apk.vercel.app-4f46e5?style=for-the-badge&logo=vercel&logoColor=white" alt="Official Website">
   </a>
-  <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk">
-    <img src="https://img.shields.io/badge/Download_APK-Release_5.0-059669?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
+  <a href="https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk">
+    <img src="https://img.shields.io/badge/Download_APK-StudentFocus.apk-059669?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
   </a>
   <a href="https://github.com/nishantkumar-AIML/StudentFocus/releases">
     <img src="https://img.shields.io/badge/Min_Android-8.0+_(Oreo)-2563eb?style=for-the-badge&logo=android" alt="Min Android 8.0+">
@@ -97,7 +97,7 @@ Modern students are overwhelmed by fragmented apps:
 
 ## 📥 Installation Guide
 
-1. Download the latest official APK: [**Download 5.apk**](https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk).
+1. Download the latest official APK: [**Download StudentFocus.apk**](https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk).
 2. Open the downloaded `.apk` file from your device's **Files** or **Downloads** folder.
 3. If prompted by Android, allow installation from unknown sources for your browser or file manager.
 4. Tap **Install**.

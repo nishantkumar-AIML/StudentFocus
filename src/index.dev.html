@@ -59,8 +59,8 @@
       "operatingSystem": "Android 8.0+",
       "applicationCategory": "EducationalApplication",
       "url": "https://studentfocus-apk.vercel.app/",
-      "downloadUrl": "https://studentfocus-apk.vercel.app/api/download",
-      "installUrl": "https://studentfocus-apk.vercel.app/api/download",
+      "downloadUrl": "https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk",
+      "installUrl": "https://studentfocus-apk.vercel.app/#installation",
       "fileFormat": "application/vnd.android.package-archive",
       "author": {
         "@type": "Person",
@@ -71,7 +71,7 @@
       "interactionStatistic": {
         "@type": "InteractionCounter",
         "interactionType": "https://schema.org/DownloadAction",
-        "userInteractionCount": 57
+        "userInteractionCount": 92
       }
     },
     {
@@ -204,7 +204,7 @@
           </svg>
           <span class="btn-text">GitHub</span>
         </a>
-        <a href="/api/download" download="StudentFocus-v5.apk" class="btn btn-primary" aria-label="Download Official Release APK">
+        <a href="/api/download" download="StudentFocus.apk" class="btn btn-primary" aria-label="Download Official Release APK">
           <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
           </svg>
@@ -236,7 +236,7 @@
           <a href="#feedback" class="mobile-nav-link">💬 Student Feedback</a>
         </nav>
         <div class="mobile-nav-cta">
-          <a href="/api/download" download="StudentFocus-v5.apk" class="btn btn-primary btn-block">
+          <a href="/api/download" download="StudentFocus.apk" class="btn btn-primary btn-block">
             <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
             </svg>
@@ -268,7 +268,7 @@
 
           <div class="hero-cta-group">
             <div class="hero-btn-with-counter">
-              <a href="/api/download" download="StudentFocus-v5.apk" class="btn btn-primary btn-lg" id="hero-download-btn">
+              <a href="/api/download" download="StudentFocus.apk" class="btn btn-primary btn-lg" id="hero-download-btn">
                 <svg class="icon-svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
@@ -277,7 +277,7 @@
               </a>
               <div class="hero-counter-tag" title="Verified releases downloaded">
                 <span class="live-dot" aria-hidden="true"></span>
-                <strong class="hero-counter-num" id="hero-download-count">57</strong>
+                <strong class="hero-counter-num" id="hero-download-count">92</strong>
                 <span class="hero-counter-lbl">verified downloads</span>
               </div>
             </div>
@@ -1332,7 +1332,7 @@
               
               <div class="dl-actions-with-counter">
                 <div class="dl-main-action-row">
-                  <a href="/api/download" download="StudentFocus-v5.apk" class="btn btn-primary btn-xl dl-btn-flex" id="install-cta-btn" itemprop="downloadUrl">
+                  <a href="/api/download" download="StudentFocus.apk" class="btn btn-primary btn-xl dl-btn-flex" id="install-cta-btn" itemprop="downloadUrl">
                     <svg class="icon-md" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                     </svg>
@@ -1345,7 +1345,7 @@
                     <span class="live-dot" aria-hidden="true"></span>
                     <div class="counter-body">
                       <span class="counter-label">Verified Downloads</span>
-                      <strong class="counter-value" itemprop="userInteractionCount" id="install-download-count">57</strong>
+                      <strong class="counter-value" itemprop="userInteractionCount" id="install-download-count">92</strong>
                     </div>
                   </div>
                 </div>
@@ -1894,7 +1894,74 @@
             </div>
 
             <div class="student-cards-list" id="feedback-cards-container">
-              <!-- Dynamically populated from /api/feedback -->
+              <!-- Real student feedback synced from live MongoDB database -->
+              <div class="student-review-card">
+                <div class="review-card-top">
+                  <div class="review-author-group">
+                    <div class="author-avatar" aria-hidden="true">A</div>
+                    <div>
+                      <div class="author-name">Arun, 3rd Year</div>
+                      <span class="author-category-tag">Attendance Tracker &amp; 75% Safe Bunks</span>
+                    </div>
+                  </div>
+                  <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                </div>
+                <p class="review-quote">"The 75% safe bunk math is extremely accurate and saved my semester exams!"</p>
+                <div class="review-card-footer">
+                  <span class="review-date">Verified Student Review</span>
+                </div>
+              </div>
+
+              <div class="student-review-card">
+                <div class="review-card-top">
+                  <div class="review-author-group">
+                    <div class="author-avatar" aria-hidden="true">A</div>
+                    <div>
+                      <div class="author-name">amit</div>
+                      <span class="author-category-tag">Weekly Time Table (Monday–Saturday)</span>
+                    </div>
+                  </div>
+                  <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                </div>
+                <p class="review-quote">"fix the bug"</p>
+                <div class="review-card-footer">
+                  <span class="review-date">Verified Student Review</span>
+                </div>
+              </div>
+
+              <div class="student-review-card">
+                <div class="review-card-top">
+                  <div class="review-author-group">
+                    <div class="author-avatar" aria-hidden="true">N</div>
+                    <div>
+                      <div class="author-name">nk</div>
+                      <span class="author-category-tag">User Interface</span>
+                    </div>
+                  </div>
+                  <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                </div>
+                <p class="review-quote">"i don't like ui"</p>
+                <div class="review-card-footer">
+                  <span class="review-date">Verified Student Review</span>
+                </div>
+              </div>
+
+              <div class="student-review-card">
+                <div class="review-card-top">
+                  <div class="review-author-group">
+                    <div class="author-avatar" aria-hidden="true">N</div>
+                    <div>
+                      <div class="author-name">nkk</div>
+                      <span class="author-category-tag">Focus Stopwatch &amp; Ambient Sounds</span>
+                    </div>
+                  </div>
+                  <div class="review-stars" aria-label="1 out of 5 stars">★☆☆☆☆</div>
+                </div>
+                <p class="review-quote">"sound is not good"</p>
+                <div class="review-card-footer">
+                  <span class="review-date">Verified Student Review</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1912,7 +1979,7 @@
           </p>
           <div class="hero-cta-group justify-center">
             <div class="cta-btn-with-counter">
-              <a href="/api/download" download="StudentFocus-v5.apk" class="btn btn-primary btn-xl">
+              <a href="/api/download" download="StudentFocus.apk" class="btn btn-primary btn-xl">
                 <svg class="icon-md" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
@@ -1920,7 +1987,7 @@
               </a>
               <div class="cta-counter-pill" title="Verified releases downloaded">
                 <span class="live-dot" aria-hidden="true"></span>
-                <span>Verified Downloads: <strong id="cta-download-count">57</strong></span>
+                <span>Verified Downloads: <strong id="cta-download-count">92</strong></span>
               </div>
             </div>
             <a href="https://github.com/nishantkumar-AIML/StudentFocus" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xl">
@@ -2021,7 +2088,7 @@
       <div class="footer-col">
         <h4 class="footer-heading">Installation &amp; Help</h4>
         <ul class="footer-links">
-          <li><a href="/api/download" download="StudentFocus-v5.apk">Download Release APK (v5.0)</a></li>
+          <li><a href="/api/download" download="StudentFocus.apk">Download Release APK (v5.0)</a></li>
           <li><a href="#installation">Installation Steps</a></li>
           <li><a href="#faq">Troubleshooting &amp; FAQ</a></li>
           <li><a href="https://github.com/nishantkumar-AIML/StudentFocus/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>

@@ -1,11 +1,13 @@
 /**
- * StudentFocus — Shared GitHub API Download Counter & Releases Sync
+ * StudentFocus — Shared GitHub API Download Counter & Telemetry Aggregator
  */
+
+const { getMongoDownloadCount } = require('./_db.js');
 
 const REPO = 'nishantkumar-AIML/StudentFocus';
 const API_URL = `https://api.github.com/repos/${REPO}/releases`;
 
-let cachedDownloads = 57;
+let cachedDownloads = 0;
 let lastFetchTime = 0;
 let lastETag = null;
 const CACHE_TTL_MS = 6 * 1000; // 6 seconds memory cache for real-time refresh
@@ -41,7 +43,6 @@ async function getLiveDownloadCount() {
     clearTimeout(timeout);
 
     if (response.status === 304) {
-      // Data unchanged on GitHub; cache is fresh
       lastFetchTime = now;
       return cachedDownloads;
     }
@@ -67,17 +68,26 @@ async function getLiveDownloadCount() {
         }
       }
     } else if (response.status === 403) {
-      // Rate limit hit; back off for 30s to prevent spamming
       lastFetchTime = now + 25000;
     }
-  } catch (err) {
-    // Graceful fallback to cached count
-  }
+  } catch (err) {}
 
   return cachedDownloads;
 }
 
+/**
+ * Returns the highest verified download count across GitHub releases and MongoDB
+ */
+async function getTotalDownloads() {
+  const [githubCount, siteCount] = await Promise.all([
+    getLiveDownloadCount().catch(() => 0),
+    getMongoDownloadCount().catch(() => 0)
+  ]);
+  return Math.max(githubCount || 0, siteCount || 0);
+}
+
 module.exports = {
   getLiveDownloadCount,
+  getTotalDownloads,
   REPO
 };

@@ -626,9 +626,9 @@
     ].filter(Boolean);
 
     // Initial value from server-rendered HTML
-    let currentTotal = 57;
+    let currentTotal = 0;
     if (counterElements.length > 0) {
-      const parsed = parseInt(counterElements[0].textContent.replace(/[^\d]/g, '') || '57', 10);
+      const parsed = parseInt(counterElements[0].textContent.replace(/[^\d]/g, '') || '0', 10);
       if (!isNaN(parsed) && parsed > 0) {
         currentTotal = parsed;
       }
@@ -748,10 +748,10 @@
       const downloadUrl = '/api/download';
 
       // Create a temporary anchor to trigger native browser download in background
-      // This ensures the user stays on the current website and never navigates to github.com
+      // This ensures the user stays on the current website and downloads directly from the fast CDN
       const tempLink = document.createElement('a');
       tempLink.href = downloadUrl;
-      tempLink.setAttribute('download', 'StudentFocus-v5.apk');
+      tempLink.setAttribute('download', 'StudentFocus.apk');
       tempLink.style.display = 'none';
       document.body.appendChild(tempLink);
       tempLink.click();
@@ -761,7 +761,7 @@
     }
 
     // Listen to clicks on ALL download APK buttons across the page
-    const downloadLinks = document.querySelectorAll('a[href*="/api/download"], a[href*="5.apk"], #hero-download-btn, #install-cta-btn');
+    const downloadLinks = document.querySelectorAll('a[href*="/api/download"], a[href*="StudentFocus.apk"], a[href*="5.apk"], #hero-download-btn, #install-cta-btn');
     downloadLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         // Prevent default navigation so user stays on the main website
@@ -981,13 +981,6 @@
             data.feedback.forEach(item => {
               cardsContainer.appendChild(renderCard(item));
             });
-          } else {
-            cardsContainer.innerHTML = `
-              <div class="empty-feedback-card">
-                <span class="empty-feedback-icon">💬</span>
-                <p class="empty-feedback-text">No student reviews posted yet. Be the first to share your thoughts!</p>
-              </div>
-            `;
           }
         })
         .catch(() => {});

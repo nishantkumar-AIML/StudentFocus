@@ -1,0 +1,34 @@
+[
+  {
+    "id": "6ac918f376382d528e78c082",
+    "name": "nkk",
+    "category": "Focus Stopwatch & Ambient Sounds",
+    "rating": 1,
+    "message": "sound is not good",
+    "createdAt": "2026-10-09T16:40:19.350Z"
+  },
+  {
+    "id": "6ac90bdfc52f8489e90cf041",
+    "name": "amit",
+    "category": "Weekly Time Table (Monday–Saturday)",
+    "rating": 5,
+    "message": "fix the bug",
+    "createdAt": "2026-10-09T15:44:31.727Z"
+  },
+  {
+    "id": "6ac90b6cc52f8489e90cf03f",
+    "name": "nk",
+    "category": "ui",
+    "rating": 5,
+    "message": "i don't like ui",
+    "createdAt": "2026-10-09T15:42:36.007Z"
+  },
+  {
+    "id": "6ac903c4196e6f9420fb91f4",
+    "name": "Arun, 3rd Year",
+    "category": "Attendance Tracker & 75% Safe Bunks",
+    "rating": 5,
+    "message": "The 75% safe bunk math is extremely accurate and saved my semester exams!",
+    "createdAt": "2026-10-09T15:09:56.236Z"
+  }
+]

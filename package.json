@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "StudentFocus App website and build pipeline",
   "scripts": {
+    "start": "node server.js",
     "build": "node build.js",
     "sync": "node scripts/sync-downloads.js"
   },

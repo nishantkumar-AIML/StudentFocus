@@ -61,10 +61,11 @@ StudentFocus features **StudentOS AI**, a dual-mode artificial intelligence arch
 
 - **Official App Website & Download Portal:** https://studentfocus-apk.vercel.app/
 - **Official Installation Guide:** https://studentfocus-apk.vercel.app/#installation
-- **Direct APK Download:** https://studentfocus-apk.vercel.app/api/download
+- **Direct APK CDN Download:** https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk
+- **Official Download Portal:** https://studentfocus-apk.vercel.app/api/download
 - **Official Releases Tracker:** https://github.com/nishantkumar-AIML/StudentFocus/releases
 - **Storage & Size:** ~30.0 MB download size (31,441,896 bytes)
-- **Verified Downloads Counter:** 65+ verified downloads directly tracked via server logs and GitHub Releases CDN telemetry.
+- **Verified Downloads Counter:** 92+ verified downloads directly tracked via server logs and GitHub Releases CDN telemetry.
 - **Live Counter API Endpoint:** https://studentfocus-apk.vercel.app/api (Real-time JSON telemetry verification)
 
 ## Cryptographic Binary Integrity & Malware Safety

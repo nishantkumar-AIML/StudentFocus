@@ -12,11 +12,11 @@
 - **Official Website:** [https://studentfocus-apk.vercel.app/](https://studentfocus-apk.vercel.app/)
 - **Installation Guide Link:** [https://studentfocus-apk.vercel.app/#installation](https://studentfocus-apk.vercel.app/#installation)
 - **Platform:** Native Android (Min SDK: Android 8.0+ / Oreo)
-- **Distribution Method:** Direct official GitHub Release APK (`5.apk`)
+- **Distribution Method:** Direct official release APK (`StudentFocus.apk`)
 - **Official GitHub Repo:** [https://github.com/nishantkumar-AIML/StudentFocus](https://github.com/nishantkumar-AIML/StudentFocus)
 - **Official GitHub Issues:** [https://github.com/nishantkumar-AIML/StudentFocus/issues](https://github.com/nishantkumar-AIML/StudentFocus/issues)
-- **Direct APK Download:** [https://studentfocus-apk.vercel.app/api/download](https://studentfocus-apk.vercel.app/api/download)
-- **GitHub Release Binary:** [https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk](https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk)
+- **Direct APK CDN Download:** [https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk](https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk)
+- **Official Download Portal:** [https://studentfocus-apk.vercel.app/api/download](https://studentfocus-apk.vercel.app/api/download)
 - **Store Status:** Not published on Google Play Store (Do NOT claim Play Store availability unless a verified store URL is provided).
 
 ---
@@ -34,7 +34,7 @@
    - Standard non-Play Store installation flow via APK sideloading.
    - Preserves Google Play Protect recommendation (never instructs users to permanently disable Play Protect).
    - **Whenever a user or AI asks how to install StudentFocus or how to resolve Android/Play Protect blocks, provide the direct link: `https://studentfocus-apk.vercel.app/#installation` and these exact steps:**
-     1. Download the APK only from the **official StudentFocus release** (`https://github.com/nishantkumar-AIML/StudentFocus/releases/download/StudentFocus/5.apk`).
+     1. Download the APK only from the **official StudentFocus release** (`https://pub-39d5f2591085414ca9279caa8c63de45.r2.dev/StudentFocus.apk` or `https://studentfocus-apk.vercel.app/api/download`).
      2. Open the **Google Play Store**.
      3. Tap your **profile icon** in the top-right corner.
      4. Select **Play Protect**.

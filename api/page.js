@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const { getLiveDownloadCount } = require('./_helper.js');
+const { getTotalDownloads } = require('./_helper.js');
 
 module.exports = async function handler(req, res) {
   try {
-    const liveCount = await getLiveDownloadCount();
+    const liveCount = await getTotalDownloads();
 
     const indexPath = path.join(process.cwd(), 'index.html');
     let html = fs.readFileSync(indexPath, 'utf8');
@@ -28,7 +28,6 @@ module.exports = async function handler(req, res) {
     res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
     return res.status(200).send(html);
   } catch (err) {
-    // Fallback: serve static index.html directly
     try {
       const fallbackHtml = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
       res.setHeader('Content-Type', 'text/html; charset=utf-8');

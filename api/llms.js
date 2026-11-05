@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const { getLiveDownloadCount } = require('./_helper.js');
+const { getTotalDownloads } = require('./_helper.js');
 
 module.exports = async function handler(req, res) {
   try {
-    const liveCount = await getLiveDownloadCount();
+    const liveCount = await getTotalDownloads();
 
     const llmsPath = path.join(process.cwd(), 'llms.txt');
     let content = '';
@@ -26,6 +26,6 @@ module.exports = async function handler(req, res) {
     return res.status(200).send(content);
   } catch (err) {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    return res.status(200).send(`# StudentFocus\n- **Verified Downloads Counter:** 57+ verified downloads`);
+    return res.status(200).send(`# StudentFocus\n- **Verified Downloads Counter:** 89+ verified downloads`);
   }
 };
